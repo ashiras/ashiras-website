@@ -2,8 +2,16 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    <title>Ashiras, inc.</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashiras, inc. - AI/Web技術コンサルティング</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <base href="/">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -40,89 +48,102 @@
     <!-- Color the status bar on mobile devices -->
     <meta name="theme-color" content="#2A95E4">
 
-    <style>
-        body {
-            font-family: sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2 {
-            color: #333;
-        }
-        footer {
-            text-align: center;
-            margin-top: 20px;
-            padding-top: 10px;
-            border-top: 1px solid #eee;
-            font-size: 0.9em;
-            color: #777;
-        }
-        body {
-            background-image: url(assets/images/bg_index_01_top.png);
-            background-position: center center;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-            background-color: #ffffff;
-        }
-    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Ashiras, inc. (アシラス株式会社)</h1>
-            <p>AIと「意味の物理学」を探求し、新たな価値創造を目指します。</p>
-        </header>
 
-        <main>
-            <section>
-                <h2>ごあいさつ</h2>
-                <p>Ashiras, inc.は、人工知能（AI）技術の探求と共に、AIが扱う「意味」の本質を物理学的な視点から解き明かす研究・開発を行っています。私たちは、AIが単なる道具に留まらず、より深く人間の知性や感情に寄り添う存在となる未来を目指し、日々活動しています。</p>
-                <p>特に、AIによる「意味生成」のメカニズムを、確率論や量子力学といった最先端の科学の知見を取り入れて理解し、より高精度で倫理的なAIシステムの設計に取り組んでいます。弊社の出版物「意味の物理学」は、その探求の一端を示すものです。</p>
-            </section>
+    <section id="hero">
+        <div class="overlay"></div> <div class="container">
+        <h1>革新とプロフェッショナリズムで、<br>ビジネス成長を加速</h1>
+        <p>AI・モダンWeb技術・データマネジメントの専門知識で、<br>お客様の課題を解決し、価値創造に貢献します。</p>
+    </section>
 
-            <section>
-                <h2>事業内容</h2>
-                <ul>
-                    <li>AI技術の研究開発</li>
-                    <li>自然言語処理（NLP）を活用したソリューション提供</li>
-                    <li>AIシステムにおける「意味」に関するコンサルティング</li>
-                    <li>関連書籍の出版・情報発信</li>
-                </ul>
-            </section>
+    <section id="about">
+        <div class="overlay"></div> <div class="container">
+            <h2>ご挨拶 / 会社概要</h2>
+            <div>
+                <h3>ご挨拶</h3>
+                <p>アシラス株式会社は、2016年設立。「革新」と「プロフェッショナリズム」で、<strong>日本全国のお客様、</strong>そしてビジネスパートナー様の成長をテクノロジーの力で加速させるパートナーです。先進技術の研究開発から実践的な導入支援まで、お客様の課題解決と価値創造に貢献します。テクノロジー分野における日本の最前線で培った知見と、グローバルな視点を活かし、お客様にとって最良のソリューションを提供いたします。</p>
+            </div>
+            <div>
+                <h3>会社概要</h3>
+                <p><strong>会社名:</strong> アシラス株式会社 (Ashiras, inc.)</p>
+                <p><strong>設立:</strong> 2016年8月</p>
+                <p><strong>資本金:</strong> 1,000万円</p>
+                <p><strong>所在地:</strong> 神戸市須磨区若木町４丁目４−３</p>
+                <p><strong>連絡先:</strong> 078-798-5203</p>
+                <p><strong>メール:</strong> <a href="mailto:ashiras@ashiras.xyz">ashiras@ashiras.xyz</a></p>
+            </div>
+        </div>
+    </section>
 
-            <section>
-                <h2>会社概要</h2>
-                <p>
-                    会社名: Ashiras, inc. (アシラス株式会社)<br>
-                    設立: 2016年8月26日<br>
-                    所在地: 兵庫県神戸市須磨区若木町４丁目４−３<br>
-                    代表者: 佐川　夫美雄<br>
-                    連絡先: 078-798-5203
-                </p>
-            </section>
+    <section id="services">
+        <div class="overlay"></div> <div class="container">
+            <h2>事業内容</h2>
+            <div>
+                <h3>AIソリューション</h3>
+                <p>AIパイプライン構築、プロンプトチューニング等、最新AI技術の研究開発と導入を支援。技術論文執筆等を通じて既に実用化を進め、大幅な開発効率化を実現しています。</p>
+            </div>
+            <div>
+                <h3>Webアプリケーション開発</h3>
+                <p>React/Angular等による独自コンポーネント開発、構造化支援。独自コンポーネント導入により、変更に強く、大幅な開発コスト削減と品質向上を実現。 国内外の主要な企業様との豊富な実績があります。</p>
+            </div>
+            <div>
+                <h3>技術コンサルティング</h3>
+                <p>ドメイン駆動設計（DDD）、アジャイル開発といった手法に加え、<strong>データベースに関する深い知識と豊富な経験に基づき、</strong>高品質かつ柔軟なソフトウェア開発、およびデータマネジメントに関する実践的なコンサルティングを提供。</p>
+            </div>
+                <div>
+                <h3>講演・執筆</h3>
+                <p>技術コミュニティへの貢献として講演・執筆活動を実施。Microsoft MVP 受賞経験のある代表は、過去に年間数十回規模の登壇実績を持ち、専門知識を共有しています。</p>
+            </div>
+        </div>
+    </section>
 
-            <section>
-                <h2>お問い合わせ</h2>
-                <p>弊社の事業や研究内容にご興味をお持ちの方は、お気軽にお問い合わせください。</p>
-                <p>お問い合わせ先: ashiras@ashiras.xyz</p>
-            </section>
-        </main>
+    <section id="strengths">
+        <div class="overlay"></div> <div class="container">
+            <h2>私たちの強み</h2>
+            <ul>
+                <li>
+                    <h3>最先端技術の実践力</h3>
+                    <p>AI/モダンWeb技術、およびデータベースに関する深い理解と、開発効率化やコスト削減・品質向上に直結する実践的な応用力。</p>
+                </li>
+                <li>
+                    <h3>信頼と実績</h3>
+                    <p>大手SIer、生保、自動車関連といった業界をリードする日本全国の企業様、および海外主要クライアントとの多数の取引実績に裏付けられた、エンタープライズレベルでの技術力とプロジェクト遂行能力。</p>
+                </li>
+                <li>
+                    <h3>少数精鋭による高い生産性</h3>
+                    <p>最適化された少数精鋭のプロフェッショナルチームにより、迅速かつ高品質なアウトプットを実現し、お客様に圧倒的な価値を提供します。</p>
+                </li>
+                    <li>
+                    <h3>カスタマイズと課題解決</h3>
+                    <p>お客様固有の課題に寄り添い、最適な技術をテーラーメイドで提供する能力。</p>
+                </li>
+                    <li>
+                    <h3>業界プレゼンスと知識共有</h3>
+                    <p>代表の豊富な登壇実績に象徴される、技術コミュニティにおける高いプレゼンスと知識共有への貢献姿勢。</p>
+                </li>
+                    <li>
+                    <h3>ワンストップ支援</h3>
+                    <p>研究開発から開発、コンサルティング、知識共有まで、テクノロジーに関する幅広いニーズに対応。</p>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-        <footer>
-            <p>&copy; 2025 Ashiras, inc. All rights reserved.</p>
-            </footer>
-    </div>
+    <section id="blog">
+            <div class="overlay"></div> <div class="container">
+            <h2>ブログ</h2>
+            <p>最新の情報や技術に関する知見は、ぜひ弊社のブログでご確認ください。</p>
+            <a href="[あなたのブログのURLをここに記述]" class="blog-button">ブログを見る</a>
+        </div>
+    </section>
+
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 アシラス株式会社 All Rights Reserved.</p>
+        </div>
+    </footer>
+
 </body>
 </html>

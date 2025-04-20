@@ -1,0 +1,460 @@
+/* ---------- 全体設定 ---------- */
+/* body要素の基本的なスタイル */
+body {
+  font-family: 'Poppins', sans-serif; /* 全体のデフォルトフォントをPoppinsに */
+  line-height: 1.6; /* 行の高さを設定し、読みやすく */
+  color: #333; /* テキストのデフォルト色を濃いグレーに */
+  background-color: #FFFFFF; /* bodyの背景色は白 */
+  margin: 0; /* bodyのデフォルトマージンをリセット */
+  padding: 0; /* bodyのデフォルトパディングをリセット */
+  overflow-x: hidden; /* 横方向のスクロールバーを非表示に */
+}
+
+/* 全ての見出し要素のスタイル */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif; /* 見出しのフォントもPoppinsに */
+  font-weight: 700; /* 見出しはBoldに */
+  color: #0019cc; /* スカイブルー系の見出し色 */
+  line-height: 1.2; /* 見出しの行の高さを調整 */
+}
+
+/* コンテンツの最大幅と中央揃えのためのコンテナクラス */
+.container {
+  width: 90%; /* コンテンツの幅 */
+  max-width: 1200px; /* より広い画面での上限幅 */
+  margin: 0 auto; /* 左右マージンをautoにして中央揃え */
+  padding: 0 20px; /* コンテナ左右の内側余白 */
+  position: relative; /* オーバーレイより手前に表示 */
+  z-index: 2; /* オーバーレイ(z-index: 1)より手前に */
+}
+
+/* 各セクション要素の上下余白 */
+section {
+  padding: 80px 0; /* セクション上下にたっぷりの余白 */
+  position: relative; /* 背景画像とオーバーレイのために必要 */
+  overflow: hidden; /* はみ出しを隠す */
+  color: #FFFFFF; /* 各セクション内のテキスト色を白に（背景画像に重ねるため） */
+}
+
+/* 各セクションの背景画像設定 */
+#hero {
+  background-image: url('./assets/images/google-deepmind-4QVqSh4VvP4-unsplash.jpg'); /* ヒーローセクションの背景画像URLをここに指定 */
+}
+
+#about {
+  background-image: url('./assets/images/sam-schooler-E9aetBe2w40-unsplash.jpg'); /* ご挨拶/会社概要セクションの背景画像URLをここに指定 */
+}
+
+#services {
+  background-image: url('./assets/images/the-new-york-public-library-ZOHihCKWmfU-unsplash.jpg'); /* 事業内容セクションの背景画像URLをここに指定 */
+}
+
+#strengths {
+  background-image: url('./assets/images/xavier-l-2L95qpS6cnA-unsplash.jpg'); /* 強みセクションの背景画像URLをここに指定 */
+}
+
+#blog {
+  background-image: url('./assets/images/andrew-neel-cckf4TsHAuw-unsplash.jpg'); /* ブログセクションの背景画像URLをここに指定 */
+}
+
+
+/* 背景画像の設定共通スタイル */
+#hero, #about, #services, #strengths, #blog {
+  background-size: cover; /* 背景画像をセクション全体を覆うように拡大縮小 */
+  background-position: center center; /* 背景画像を中央に配置 */
+  background-repeat: no-repeat; /* 背景画像を繰り返さない */
+  background-attachment: fixed; /* スクロールしても背景を固定 (任意) */
+}
+
+
+/* 背景画像の上に重ねる半透明のオーバーレイ */
+.overlay {
+  position: absolute; /* 親要素 (section) に対して絶対配置 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1); /* 黒の半透明 (透明度0.5) */
+  z-index: 1; /* 背景画像より手前、コンテンツより奥に配置 */
+}
+
+
+/* 各セクション内の見出しの色調整（オーバーレイの上に表示されるため白に） */
+#hero h1, #hero h2, #hero h3,
+#about h1, #about h2, #about h3,
+#services h1, #services h2, #services h3,
+#strengths h1, #strengths h2, #strengths h3,
+#blog h1, #blog h2, #blog h3 {
+  color: #FFFFFF; /* 見出し色を白に */
+}
+
+/* 各セクション内の段落などのテキスト色も白に */
+#hero p,
+#about p,
+#services p, #services .container > div, /* 事業内容ブロックのテキストも白に */
+#strengths ul, #strengths li, #strengths p, /* 強みリストのテキストも白に */
+#blog p {
+   color: #FFFFFF; /* テキスト色を白に */
+}
+
+
+/* ---------- ヒーローセクション (#hero) ---------- */
+#hero {
+  /* background-color は画像になるため不要 */
+  text-align: center; /* テキストを中央揃えに */
+  padding: 100px 0; /* 上下にたっぷりの余白 */
+  min-height: 100vh; /* 画面の高さの60%以上の高さを確保 */
+  display: flex; /* コンテンツを中央に配置するためにFlexboxを使用 */
+  justify-content: center; /* 水平方向の中央揃え */
+  align-items: center; /* 垂直方向の中央揃え */
+}
+
+/* ヒーローセクション内の見出し1 */
+#hero h1 {
+  font-size: 2.8em; /* 見出しの文字サイズ */
+  margin-bottom: 20px; /* 下に余白 */
+  font-weight: 700; /* Poppins Bold */
+  color: #001082; /* ヒーローセクションの見出し色は白 */
+}
+
+/* ヒーローセクション内の段落 */
+#hero p {
+  font-size: 1.3em; /* 段落の文字サイズ */
+  margin-bottom: 30px; /* 下に余白 */
+  font-weight: 300; /* Poppins Light */
+  color: #075b85; /* 少し薄めの白でコントラストをつける */
+}
+
+/* ヒーローセクションのCTAボタン */
+.cta-button {
+  display: inline-block; /* ボタンとして表示 */
+  background-color: #FFFFFF; /* ボタンの背景色を白に */
+  color: #00BFFF; /* ボタンのテキスト色をスカイブルーに */
+  padding: 15px 30px; /* 内側の余白 */
+  text-decoration: none; /* 下線をなくす */
+  border-radius: 5px; /* 角を少し丸く */
+  font-weight: 600; /* Poppins SemiBold */
+  transition: background-color 0.3s ease, color 0.3s ease; /* ホバー時の変化を滑らかに */
+}
+
+/* CTAボタンのホバー効果 */
+.cta-button:hover {
+  background-color: #0077CC; /* ホバー時の背景色（少し濃い青） */
+  color: #FFFFFF; /* ホバー時のテキスト色（白） */
+}
+
+
+/* ---------- ご挨拶 / 会社概要セクション (#about) ---------- */
+#about {
+  /* background-color は画像になるため削除 */
+  padding: 80px 0; /* 上下にたっぷりの余白 */
+  min-height: 100vh; /* 画面の高さの60%以上の高さを確保 */
+  /* color は section の共通スタイルで白に設定済み */
+}
+
+/* ご挨拶 / 会社概要セクションのタイトル */
+#about h2 {
+  text-align: center; /* セクションタイトルを中央揃え */
+  margin-bottom: 60px; /* タイトルの下に大きめの余白 */
+  /* color は section の共通スタイルで白に設定済み */
+}
+
+/* ご挨拶 / 会社概要セクション内の小見出し */
+#about h3 {
+  /* color は section の共通スタイルで白に設定済み */
+  margin-top: 40px; /* 小見出しの上に余白 */
+  margin-bottom: 15px; /* 小見出しの下に余白 */
+  font-weight: 600; /* Poppins SemiBold */
+}
+
+/* ご挨拶 / 会社概要セクション内の段落 */
+#about p {
+  margin-bottom: 20px; /* 段落の下に余白 */
+  font-weight: 400; /* Poppins Regular */
+  /* color は section の共通スタイルで白に設定済み */
+}
+
+/* セクション内の各コンテンツブロック（代表挨拶、会社概要） */
+#about .container > div {
+  margin-bottom: 40px; /* 各ブロックの下に余白 */
+}
+
+/* 最後のコンテンツブロックの下の余白は調整 */
+#about .container > div:last-child {
+  margin-bottom: 0;
+}
+
+/* ご挨拶 / 会社概要セクション内のリンクの色を白に */
+#about a {
+  color: #FFFFFF; /* リンクの色を白に */
+  text-decoration: none; /* デフォルトの下線をなくす（任意） */
+}
+
+/* リンクの様々な状態（訪問済み、ホバー、アクティブ）でも色を白に保つ */
+#about a:link,
+#about a:visited,
+#about a:hover,
+#about a:active {
+  color: #FFFFFF; /* 常に白 */
+}
+
+/* ---------- 事業内容詳細セクション (#services) ---------- */
+#services {
+  /* background-color は画像になるため削除 */
+  padding: 80px 0; /* 上下にたっぷりの余白 */
+  min-height: 100vh; /* 画面の高さの60%以上の高さを確保 */
+  /* color は section の共通スタイルで白に設定済み */
+}
+
+/* 事業内容詳細セクションのタイトル */
+#services h2 {
+  text-align: center; /* セクションタイトルを中央揃え */
+  margin-bottom: 60px; /* タイトルの下に大きめの余白 */
+  /* color は section の共通スタイルで白に設定済み */
+}
+
+/* 各事業内容のブロック */
+#services .container > div {
+  background-color: rgba(255, 255, 255, 0.8); /* 事業内容ブロックの背景を半透明の白に */
+  padding: 30px; /* ブロックの内側の余白 */
+  margin-bottom: 40px; /* 各ブロックの下に余白 */
+  border-left: 5px solid #00BFFF; /* 左側にスカイブルーのライン */
+  border-radius: 8px; /* 角を少し丸く */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 軽く影をつけて立体感を出す */
+  transition: transform 0.3s ease; /* ホバー時のアニメーション */
+  color: #333; /* ブロック内のテキスト色を濃いグレーに戻す */
+}
+
+/* 各事業内容ブロックのホバー効果 */
+#services .container > div:hover {
+  transform: translateY(-10px); /* 少し上に浮き上がる */
+}
+
+/* 各事業内容ブロック内の小見出し */
+#services h3 {
+  color: #0077CC; /* 小見出しの色はスカイブルー系に */
+  margin-top: 0; /* 上の余白をリセット */
+  margin-bottom: 15px; /* 下に余白 */
+  font-weight: 600; /* Poppins SemiBold */
+}
+
+/* 各事業内容ブロック内の段落 */
+#services p {
+  margin-bottom: 0; /* 段落の下の余白をリセット */
+  font-weight: 400; /* Poppins Regular */
+  color: #333; /* 段落のテキスト色も濃いグレーに */
+}
+
+/* 最後の事業内容ブロックの下の余白は調整 */
+#services .container > div:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ---------- 私たちの強みセクション (#strengths) ---------- */
+#strengths {
+  /* background-color は画像になるため削除 */
+  padding: 80px 0; /* 上下にたっぷりの余白 */
+  min-height: 100vh; /* 画面の高さの60%以上の高さを確保 */
+  /* color は section の共通スタイルで白に設定済み */
+}
+
+/* 私たちの強みセクションのタイトル */
+#strengths h2 {
+  text-align: center; /* セクションタイトルを中央揃え */
+  margin-bottom: 60px; /* タイトルの下に大きめの余白 */
+  /* color は section の共通スタイルで白に設定済み */
+}
+
+/* 私たちの強みリスト */
+#strengths ul {
+  list-style: none; /* リストのデフォルトのマーカーを削除 */
+  padding: 0; /* リストのデフォルトパディングを削除 */
+  margin: 0; /* リストのデフォルトマージンを削除 */
+}
+
+/* 私たちの強みリストの各項目 */
+#strengths li {
+  background-color: rgba(255, 255, 255, 0.8); /* リスト項目の背景を半透明の白に */
+  padding: 30px; /* 内側の余白 */
+  margin-bottom: 30px; /* 各項目の下に余白 */
+  border-left: 5px solid #00BFFF; /* 左側にスカイブルーのライン */
+  border-radius: 8px; /* 角を少し丸く */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* 軽い影 */
+  transition: transform 0.3s ease; /* ホバー時のアニメーション */
+  color: #333; /* リスト項目のテキスト色を濃いグレーに戻す */
+}
+
+/* 私たちの強みリスト各項目のホバー効果 */
+#strengths li:hover {
+  transform: translateY(-5px); /* 少し上に浮き上がる */
+}
+
+/* 私たちの強みリスト項目内の小見出し */
+#strengths h3 {
+  color: #0077CC; /* 小見出しの色はスカイブルー系に */
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 600; /* Poppins SemiBold */
+}
+
+/* 私たちの強みリスト項目内の段落 */
+#strengths p {
+  margin-bottom: 0;
+  font-weight: 400; /* Poppins Regular */
+  color: #333; /* 段落のテキスト色も濃いグレーに */
+}
+
+/* 最後のリスト項目の下の余白は調整 */
+#strengths li:last-child {
+  margin-bottom: 0;
+}
+
+
+/* ---------- 実績紹介セクション (#portfolio) - 削除 ---------- */
+/* このセクションのスタイルは全て削除しました */
+
+
+/* ---------- ブログへのリンクセクション (#blog) ---------- */
+#blog {
+  /* background-color は画像になるため削除 */
+  padding: 80px 0; /* 上下にたっぷりの余白 */
+  text-align: center; /* コンテンツを中央揃え */
+  min-height: 100vh; /* 画面の高さの60%以上の高さを確保 */
+  /* color は section の共通スタイルで白に設定済み */
+}
+
+/* ブログへのリンクセクションのタイトル */
+#blog h2 {
+  margin-bottom: 30px; /* タイトルの下に余白 */
+  /* color は section の共通スタイルで白に設定済み */
+}
+
+/* ブログへのリンクセクション内の段落 */
+#blog p {
+  font-size: 1.1em;
+  margin-bottom: 30px; /* 段落の下に余白 */
+  font-weight: 400; /* Poppins Regular */
+  /* color は section の共通スタイルで白に設定済み */
+}
+
+/* ブログを見るボタンのスタイル */
+.blog-button {
+   display: inline-block; /* ボタンとして表示 */
+  background-color: #FFFFFF; /* ボタンの背景色を白に */
+  color: #00BFFF; /* ボタンのテキスト色をスカイブルーに */
+  padding: 15px 30px; /* 内側の余白 */
+  text-decoration: none; /* 下線をなくす */
+  border-radius: 5px; /* 角を少し丸く */
+  font-weight: 600; /* Poppins SemiBold */
+  transition: background-color 0.3s ease; /* ホバー時の変化を滑らかに */
+}
+
+/* ブログを見るボタンのホバー効果 */
+.blog-button:hover {
+  background-color: #0077CC; /* ホバー時の背景色（少し濃い青） */
+}
+
+
+/* ---------- お問い合わせセクション (#contact) - 削除 ---------- */
+/* このセクションのスタイルは全て削除しました */
+
+
+/* ---------- フッター (footer) ---------- */
+footer {
+  background-color: #333; /* 暗めの背景色 */
+  color: #FFFFFF; /* テキストの色を白に */
+  text-align: center; /* テキストを中央揃え */
+  padding: 30px 0; /* 上下に余白 */
+  font-size: 0.9em;
+  font-weight: 300; /* Poppins Light */
+  position: relative;
+  z-index: 1; /* 他のセクションと同じz-index */
+}
+
+/* フッター内の段落 */
+footer .container p {
+  margin: 0; /* 段落のデフォルトマージンをリセット */
+}
+
+
+/* ---------- レスポンシブ対応 (モバイル向け) ---------- */
+/* 画面幅が768px以下の場合に適用されるスタイル */
+@media (max-width: 768px) {
+  /* 全体設定 */
+  section {
+      padding: 60px 0; /* セクション上下の余白を調整 */
+  }
+
+  .container {
+       padding: 0 15px; /* コンテナ左右の内側余白を調整 */
+  }
+
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.8em; margin-bottom: 40px; }
+  h3 { font-size: 1.3em; margin-top: 30px; margin-bottom: 10px;}
+
+  /* ヒーローセクション */
+  #hero {
+      padding: 80px 0; /* 上下の余白を調整 */
+      min-height: 50vh; /* 高さを調整 */
+  }
+
+  #hero h1 {
+      font-size: 2em; /* 文字サイズを小さく */
+  }
+
+  #hero p {
+      font-size: 1em; /* 文字サイズを小さく */
+  }
+
+  .cta-button {
+      padding: 10px 20px; /* ボタンのパディングを小さく */
+  }
+
+  /* ご挨拶 / 会社概要セクション */
+  #about .container > div {
+      margin-bottom: 30px; /* 各ブロックの下の余白を調整 */
+  }
+
+  /* 事業内容詳細セクション */
+   #services .container > div {
+      padding: 20px; /* ブロックの内側の余白を調整 */
+      margin-bottom: 30px; /* 各ブロックの下の余白を調整 */
+  }
+
+  /* 私たちの強みセクション */
+   #strengths li {
+      padding: 20px; /* 内側の余白を調整 */
+      margin-bottom: 20px; /* 各項目の下に余白を調整 */
+  }
+
+  /* 実績紹介セクション - 削除済み */
+
+  /* ブログへのリンクセクション */
+  #blog {
+      padding: 60px 0; /* 上下の余白を調整 */
+  }
+
+  #blog h2 {
+      margin-bottom: 20px; /* タイトルの下の余白を調整 */
+  }
+
+  #blog p {
+      font-size: 1em; /* 文字サイズを調整 */
+      margin-bottom: 20px; /* 余白を調整 */
+  }
+
+   .blog-button {
+      padding: 10px 20px; /* ボタンのパディングを小さく */
+  }
+
+  /* お問い合わせセクション - 削除済み */
+
+  /* フッター */
+  footer {
+      padding: 20px 0; /* 上下の余白を調整 */
+  }
+}
+
+/* ---------- レスポンシブ対応 (デスクトップ・タブレット
