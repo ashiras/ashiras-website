@@ -136,6 +136,13 @@
     border-bottom: 1px solid #ccc; /* 下に薄い区切り線 */
 }
 
+/* MEDIUMリンクコンテナ */
+.sidebar .medium-link {
+    margin-top: 20px; /* 記事一覧タイトルとの間に下余白 */
+    padding-top: 15px; /* リンクの下にパディング */
+    border-top: 1px solid #ccc; /* 下に薄い区切り線 */
+}
+
 /* HOMEリンクのテキストスタイル */
 .sidebar .home-link a {
     text-decoration: none; /* デフォルトの下線をなくす */
@@ -145,8 +152,22 @@
     font-size: 1.1em; /* フォントサイズを少し大きく */
 }
 
+/* MEDIUMリンクのテキストスタイル */
+.sidebar .medium-link a {
+    text-decoration: none; /* デフォルトの下線をなくす */
+    color: #333; /* テキストの色を濃いグレーに */
+    font-weight: bold; /* テキストを太字に */
+    display: block; /* クリック領域を広げる */
+    font-size: 1.1em; /* フォントサイズを少し大きく */
+}
+
 /* HOMEリンクのホバー効果 */
 .sidebar .home-link a:hover {
+    color: #0077CC; /* マウスカーソルを合わせた時の色をスカイブルー系に */
+}
+
+/* MEDIUMリンクのホバー効果 */
+.sidebar .medium-link a:hover {
     color: #0077CC; /* マウスカーソルを合わせた時の色をスカイブルー系に */
 }
 
@@ -171,6 +192,10 @@
                 <!-- 記事リストはJavaScriptで動的に生成 -->
                 <!-- <li><a href="#">読み込み中...</a></li> はJavaScriptで削除 -->
             </ul>
+
+            <div class="medium-link">
+                <a href="https://medium.com/@albatrosary">Medium</a>
+            </div>
         </div>
 
         <div class="main-content">
