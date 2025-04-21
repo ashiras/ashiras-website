@@ -16,6 +16,37 @@ const markdownViewer = document.getElementById('pdf-viewer'); // IDはそのま�
 // 記事一覧リストを表示する要素
 const articleListElement = document.getElementById('article-list');
 
+// 日付文字列 (例: "YYYY-MM-DD") を "Month Day<suffix>, YYYY" 形式に整形する関数
+// 例: "2025-06-27" -> "June 27th, 2025"
+function formatDate(dateString) {
+    if (!dateString) return ''; // 日付文字列がない場合は空を返す
+
+    const date = new Date(dateString);
+    if (isNaN(date.getTime())) { // 無効な日付の場合
+        console.error("Invalid date string:", dateString);
+        return dateString; // 元の文字列を返すか、エラー表示など
+    }
+
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    // Date.toLocaleDateString を使って "Month Day, YYYY" の形式を取得 (例: "June 27, 2025")
+    const formattedDate = date.toLocaleDateString('en-US', options);
+
+    // 日付の部分に序数詞 (-st, -nd, -rd, -th) を追加
+    const parts = formattedDate.split(' ');
+    const day = parseInt(parts[1].replace(',', '')); // 日付の数字を取得 (例: 27)
+    let suffix = 'th';
+    if (day === 1 || day === 21 || day === 31) {
+        suffix = 'st';
+    } else if (day === 2 || day === 22) {
+        suffix = 'nd';
+    } else if (day === 3 || day === 23) {
+        suffix = 'rd';
+    }
+    parts[1] = day + suffix + ','; // 日付に序数詞とコンマを追加
+
+    return parts.join(' '); // 整形された日付文字列を返す
+}
+
 
 // Markdownファイルを読み込み、HTMLに変換して表示する関数
 async function renderMarkdown(markdownUrl) {
@@ -31,8 +62,9 @@ async function renderMarkdown(markdownUrl) {
         const markdownText = await response.text();
 
         // Marked.js を使って Markdown を HTML に変換
-        // marked() 関数は HTML の <script> タグで読み込んでいるため、グローバルに利用可能
-        const htmlContent = marked.parse(markdownText); // marked.parse() を使用
+        // marked.parse() を使用します
+        // marked() または marked.parse() は HTML の <script> タグで読み込んでいるためグローバルに利用可能
+        const htmlContent = marked.parse(markdownText); // Marked.js 4.0.0 以降は parse() を推奨
 
         // 変換したHTMLをMarkdown表示領域に表示
         markdownViewer.innerHTML = htmlContent;
@@ -42,7 +74,6 @@ async function renderMarkdown(markdownUrl) {
         markdownViewer.innerHTML = '<p>記事の読み込みに失敗しました。ファイルが存在するか確認してください。</p>';
     }
 }
-
 
 // 記事一覧データを読み込み、リストを表示する関数
 async function loadArticleList() {
@@ -60,19 +91,26 @@ async function loadArticleList() {
         // 記事データを元にリスト項目を生成
         articles.forEach(article => {
             const listItem = document.createElement('li');
-            const link = document.createElement('a');
+            const link = document.createElement('a'); // 記事タイトルリンク
+            const dateElement = document.createElement('p'); // ★追加：日付表示用の要素を作成 ★
 
             // リンク先を記事IDに（JavaScriptで制御するため実質ダミー）
             link.href = `#${article.id}`;
             link.textContent = article.title; // リンクのテキストを記事タイトルに
 
+            // ★追加：記事データに date プロパティがあれば、日付を整形して要素に設定 ★
+            if (article.date) {
+                 dateElement.textContent = formatDate(article.date); // 整形関数を使用
+                 dateElement.classList.add('article-date'); // スタイルのためのクラスを追加
+            }
+
             // クリックイベントリスナーを追加
             link.addEventListener('click', (event) => {
-                event.preventDefault(); // デフォルトのリンク遷移を防ぐ
+                event.preventDefault(); // デフォルトのリンク遷移（ページ内ジャンプなど）を防ぐ
                 console.log(`記事タイトル「${article.title}」がクリックされました。対応ファイル: ${article.filename}`);
 
-                // ★★★ クリックされた記事のMarkdownを表示 ★★★
-                renderMarkdown(article.filename); // クリックされた記事のMarkdownファイルを renderMarkdown 関数に渡して表示
+                // クリックされた記事のMarkdownを表示
+                renderMarkdown(article.filename);
 
                 // Optional: アクティブなリンクにスタイルを適用
                 // 現在アクティブなリンクからクラスを削除
@@ -82,13 +120,18 @@ async function loadArticleList() {
                 // クリックされたリンクにアクティブクラスを追加
                 event.target.classList.add('active');
 
+                // Optional: モバイル表示でメニューを閉じるなどの処理をここに追加することも考えられます
             });
 
-            listItem.appendChild(link);
-            articleListElement.appendChild(listItem);
+            // リスト項目にリンク（タイトル）と日付要素を追加
+            if (article.date) { // 日付データがある場合のみ追加
+                listItem.appendChild(dateElement); // ★追加：日付要素をタイトルリンクの下に追加 ★
+            }
+            listItem.appendChild(link); // タイトルリンクを先に追加
+            articleListElement.appendChild(listItem); // リスト項目を記事一覧に追加
         });
 
-         // ★★★ 初期表示する記事の制御 ★★★
+        // ★★★ 初期表示する記事の制御 ★★★
         // ページ読み込み時、記事一覧が読み込まれた後に実行
         // もし currentArticleUrl が設定されていればその記事を表示
         // 設定されていなければ、記事リストの最初の記事を表示

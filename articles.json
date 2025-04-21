@@ -2,11 +2,13 @@
   {
     "id": "semantic_prompting",
     "title": "セマンティック・プロンプティング",
-    "filename": "blogs/semantic_prompting.md"
+    "filename": "blogs/semantic_prompting.md",
+    "date": "2025-04-21"
   }, 
   {
     "id": "sagawa_semantic_2",
     "title": "AIを利用したソフトウェア開発",
-    "filename": "blogs/test2.md"
+    "filename": "blogs/test2.md",
+    "date": "2025-06-27"
   }
 ]
