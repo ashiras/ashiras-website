@@ -320,7 +320,7 @@ section {
   /* background-color は画像になるため削除 */
   padding: 80px 0; /* 上下にたっぷりの余白 */
   text-align: center; /* コンテンツを中央揃え */
-  min-height: 100vh; /* 画面の高さの60%以上の高さを確保 */
+  min-height: 80vh; /* 画面の高さの60%以上の高さを確保 */
   /* color は section の共通スタイルで白に設定済み */
 }
 
