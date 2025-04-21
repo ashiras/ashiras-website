@@ -2,47 +2,55 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
-    
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashiras, inc. - ブログ</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Ashiras, inc. - ブログ</title> <!-- 重複タイトルは削除 -->
+    <link rel="stylesheet" href="style.css"> <!-- 重複リンクは削除 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <base href="/">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 重複meta viewportは削除 -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Ashiras, inc. は、Web技術を利用したエンタープライズ・アプリケーションを開発・コンサルティングしている企業です。">
-    <title>Ashiras, inc.</title>
+    <!-- 重複titleは削除 -->
+    <!-- <title>Ashiras, inc.</title> -->
     <meta property="og:site_name" content="Ashiras, inc.">
     <meta property="og:locale" content="ja_JP">
+    <!-- OGPタグなど、必要に応じて追加 -->
 
-    <link rel="stylesheet" href="style.css">
+    <!-- Marked.js ライブラリの読み込み (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
     <style>
         /* ここは基本的なリセットや共通スタイルとして残しておきます */
         body { margin: 0; padding: 0; font-family: sans-serif; } /* 簡単なボディスタイル */
 
-        /* PDF表示領域の基本的なスタイル（調整） */
-        #pdf-viewer {
-            margin: 0 auto; /* 必要に応じて調整 */
-            /* border: 1px solid #ccc; */ /* レイアウトによっては不要になる */
+        /* PDF表示領域の基本的なスタイル（Marked.js 表示領域として再利用）*/
+        /* PDF.js 関連のスタイルは削除 */
+        #pdf-viewer { /* Marked.js のHTMLコンテンツを表示する領域として再利用 */
+            /* Markdownから変換されたHTMLのスタイルは別途調整 */
+            margin: 20px auto; /* 必要に応じて調整 */
+            /* border: 1px solid #ccc; */ /* 不要であればコメントアウト/削除 */
             width: 100%; /* 親要素 (main-content) の幅いっぱいに */
-            max-width: 800px; /* 例：PDF表示領域の最大幅 */
-        }
-        .pdf-page {
-            border-bottom: 1px solid #eee; /* ページ間に線を引く */
-            padding-bottom: 20px; /* 各ページの下に余白 */
-            margin-bottom: 20px; /* 各ページの下にマージン */
-        }
-         .pdf-page canvas {
-             display: block; /* canvasの下にできるわずかな隙間をなくす */
-             margin: 0 auto; /* ページを中央揃え */
-         }
+            max-width: 800px; /* 例：表示領域の最大幅 */
+            /* Markdownから変換されたHTMLのスタイルは別途調整 */
 
-         /* レイアウト用スタイル */
+            /* ★★★ 追加：ブログ記事の基本的な文字色を黒に ★★★ */
+            color: #333; /* または #000000, black とも書けます */
+            h1, h2, h3, h4, h5, h6 {
+                font-family: 'Poppins', sans-serif;
+                font-weight: 500;
+                color: #333;
+                line-height: 1.2;
+            }
+        }
+        /* レイアウト用スタイル */
+        /* これらのスタイルはそのまま維持 */
 
 /* サイト全体ラッパー - Flexboxで子要素（サイドバーとメインコンテンツ）を横に並べる */
 .site-wrapper {
@@ -153,19 +161,18 @@
            </div>
 
             <ul id="article-list">
-                <li><a href="#">読み込み中...</a></li> </ul>
+                <!-- 記事リストはJavaScriptで動的に生成 -->
+                <!-- <li><a href="#">読み込み中...</a></li> はJavaScriptで削除 -->
+            </ul>
         </div>
 
         <div class="main-content">
+            <!-- Markdownから変換されたHTMLを表示する領域として再利用 -->
             <div id="pdf-viewer">
                 <p>記事を選択してください。</p>
             </div>
         </div>
     </div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs" type="module"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.min.mjs" type="module"></script>
-
     <script src="script.js" type="module"></script>
 
 </body>
