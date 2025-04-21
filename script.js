@@ -8,6 +8,14 @@ import * as pdfjsLib from 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379
 // ここでワーカーのURLを明示的に指定するのが推奨されています。
 pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.min.mjs';
 
+// ★★★ 追加：CMapファイルと標準フォントデータの場所を明示的に指定 ★★★
+// 日本語表示などに必要な追加ファイルへのパスです。
+// ご利用のPDF.jsのバージョン(4.0.379)に合わせたCDN上のパスを指定します。
+pdfjsLib.GlobalWorkerOptions.cMapUrl = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/cmaps/';
+pdfjsLib.GlobalWorkerOptions.cMapPacked = true; // cmaps.json などのパックされたCMapを使用する場合 (CDNでは通常こちら)
+
+// 標準フォントデータが必要な場合（必要に応じて追加）
+pdfjsLib.GlobalWorkerOptions.standardFontDataUrl = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/standard_fonts/';
 
 // getDocument 関数を取得
 const getDocument = pdfjsLib.getDocument;
