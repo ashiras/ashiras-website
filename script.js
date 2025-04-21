@@ -13,6 +13,8 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs
 // ご利用のPDF.jsのバージョン(4.0.379)に合わせたCDN上のパスを指定します。
 pdfjsLib.GlobalWorkerOptions.cMapUrl = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/cmaps/';
 pdfjsLib.GlobalWorkerOptions.cMapPacked = true; // cmaps.json などのパックされたCMapを使用する場合 (CDNでは通常こちら)
+pdfjsLib.GlobalWorkerOptions.cMapUrl = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/cmaps/';
+pdfjsLib.GlobalWorkerOptions.cMapPacked = true;
 
 // 標準フォントデータが必要な場合（必要に応じて追加）
 pdfjsLib.GlobalWorkerOptions.standardFontDataUrl = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/standard_fonts/';
@@ -52,7 +54,17 @@ async function renderPdf(pdfUrl) {
 
     try {
         // PDFドキュメントを非同期で読み込みます
-        const loadingTask = getDocument(pdfUrl);
+        // ★★★ 修正：getDocument にオプションとして CMap 設定を渡す ★★★
+        // GlobalWorkerOptions で設定した cMapUrl と cMapPacked を再利用し、
+        // getDocument のオプションとして直接渡します。
+        const loadingTask = getDocument({
+            url: pdfUrl, // 読み込みたいPDFファイルのURL
+            cMapUrl: pdfjsLib.GlobalWorkerOptions.cMapUrl, // GlobalWorkerOptions で設定した cMapUrl の値を渡す
+            cMapPacked: pdfjsLib.GlobalWorkerOptions.cMapPacked, // GlobalWorkerOptions で設定した cMapPacked の値を渡す
+            // 必要に応じて、standardFontDataUrl も同様に渡す
+            // standardFontDataUrl: pdfjsLib.GlobalWorkerOptions.standardFontDataUrl
+        });
+        // ★★★ 修正終わり ★★★
         currentLoadingTask = loadingTask; // 新しいタスクを currentLoadingTask にセット
 
         const pdf = await loadingTask.promise;
