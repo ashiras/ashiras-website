@@ -320,7 +320,7 @@ section {
   /* background-color は画像になるため削除 */
   padding: 80px 0; /* 上下にたっぷりの余白 */
   text-align: center; /* コンテンツを中央揃え */
-  min-height: 80vh; /* 画面の高さの60%以上の高さを確保 */
+  min-height: 78vh; /* 画面の高さの60%以上の高さを確保 */
   /* color は section の共通スタイルで白に設定済み */
 }
 
@@ -377,6 +377,12 @@ footer .container p {
   margin: 0; /* 段落のデフォルトマージンをリセット */
 }
 
+/* フッターのGeminiクレジットのスタイル（任意）*/
+.gemini-credit {
+  font-size: 0.8em; /* 例：フッターの他のテキストより少し小さく */
+  margin-top: 10px; /* 例：著作権表示との間に少し余白 */
+  /* color: #CCCCCC; */ /* 例：色を少し薄く */
+}
 
 /* ---------- レスポンシブ対応 (モバイル向け) ---------- */
 /* 画面幅が768px以下の場合に適用されるスタイル */
