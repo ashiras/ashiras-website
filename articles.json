@@ -3,12 +3,14 @@
     "id": "structuring_for_web_apps",
     "title": "Webアプリに対する構造化",
     "filename": "blogs/structuring_for_web_apps.md",
-    "date": "2025-04-21"
+    "date": "2025-04-21",
+    "tags": ["Web"]
   },
   {
     "id": "semantic_prompting",
     "title": "セマンティック・プロンプティング",
     "filename": "blogs/semantic_prompting.md",
-    "date": "2025-04-20"
+    "date": "2025-04-20",
+    "tags": ["AI"]
   }
 ]

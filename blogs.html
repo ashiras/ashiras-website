@@ -171,12 +171,64 @@
     color: #0077CC; /* マウスカーソルを合わせた時の色をスカイブルー系に */
 }
 
-#article-list .article-date {
-    font-size: 0.6em; /* フォントサイズを親要素の0.8倍に小さく */
-    color: #555; /* 色を濃いグレーに（例）*/
-    margin-top: 2px; /* タイトルからの上マージン */
-    margin-bottom: 0; /* 下マージンをリセット */
-}
+        /* 記事一覧の日付スタイル */
+        #article-list .article-date {
+            font-size: 0.8em;
+            color: #555;
+            /* margin-top: 2px; */ /* 親要素の Flex コンテナで調整するためリセット */
+            margin: 0; /* デフォルトのマージンをリセット */
+            /* 必要であれば、右側にマージンを追加してタグとの隙間を調整 */
+            margin-right: 10px; /* 例：タグとの間に右マージン */
+
+            flex-shrink: 0; /* 縮まないように（任意）*/
+        }
+
+        /* 記事一覧のタグコンテナ */
+        #article-list .article-tags {
+            /* margin-top: 5px; */ /* 親要素の Flex コンテナで調整するためリセット */
+            margin: 0; /* デフォルトのマージンをリセット */
+
+            /* タグを横並びにするための Flexbox 設定 */
+            display: flex;
+            flex-wrap: wrap; /* タグが多い場合に折り返す */
+            gap: 5px; /* タグ間の隙間 */
+            align-items: center; /* タグを垂直中央に揃える */
+
+            /* Flexアイテムとしての設定（親要素 .meta-info 内で）*/
+            flex-grow: 1; /* 残りのスペースがあれば広がる */
+        }
+
+        /* 記事一覧のタグ一つ一つのスタイル（四角いラベル風） */
+        #article-list .article-tag {
+            display: inline-block; /* Flexアイテムとして横並び、サイズもコンテンツに合わせる */
+            background-color: #0077CC;
+            color: #FFFFFF;
+            font-size: 0.7em;
+            padding: 2px 6px;
+            border-radius: 4px;
+            /* gap を使っているので margin は不要 */
+            /* margin-right: 5px; */
+            /* margin-bottom: 5px; */
+
+             cursor: default;
+        }
+
+
+        /* ★追加：日付とタグを囲むコンテナ - Flexboxで横並びにする ★ */
+        #article-list .meta-info {
+            display: flex; /* Flexコンテナにして子要素（日付とタグコンテナ）を横に並べる */
+            align-items: center; /* 子要素を垂直中央に揃える */
+            margin-top: 2px; /* タイトルからの上マージン */
+            /* 子要素間の隙間は、日付要素の margin-right または gap で調整 */
+            /* gap: 10px; */ /* 子要素間の隙間（meta-info の子要素間の隙間）*/
+        }
+
+        /* 記事タイトルリンクのスタイル（必要であれば調整）*/
+        /* タイトルが長くて日付・タグと重なる場合など */
+        #article-list li > a {
+            /* display: block; */ /* 元々ブロックですが念のため */
+            margin-bottom: 2px; /* タイトルと日付/タグの間隔 */
+        }
     </style>
 </head>
 <body>
