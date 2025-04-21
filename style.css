@@ -112,6 +112,7 @@ section {
 /* ヒーローセクション内の見出し1 */
 #hero h1 {
   font-size: 2.8em; /* 見出しの文字サイズ */
+  margin-top: 0px; /* 上に余白なし */
   margin-bottom: 20px; /* 下に余白 */
   font-weight: 700; /* Poppins Bold */
   color: #001082; /* ヒーローセクションの見出し色は白 */
