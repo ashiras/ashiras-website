@@ -1,0 +1,17 @@
+[
+  {
+    "id": "sagawa_semantic_space_human_ai",
+    "title": "セマンティック・スペースと人間・AI",
+    "filename": "blogs/sagawa_semantic_space_human_ai.pdf"
+  },
+  {
+    "id": "example_article_2",
+    "title": "PDF.jsを使ったブログの構築",
+    "filename": "blogs/ai-driven_development.pdf"
+  },
+  {
+    "id": "example_article_3",
+    "title": "JavaScript非同期処理入門",
+    "filename": "blogs/example_article_3.pdf"
+  }
+]

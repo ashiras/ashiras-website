@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF.js ブログ</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ここは基本的なリセットや共通スタイルとして残しておきます */
+        body { margin: 0; padding: 0; font-family: sans-serif; } /* 簡単なボディスタイル */
+
+        /* PDF表示領域の基本的なスタイル（調整） */
+        #pdf-viewer {
+            margin: 0 auto; /* 必要に応じて調整 */
+            /* border: 1px solid #ccc; */ /* レイアウトによっては不要になる */
+            width: 100%; /* 親要素 (main-content) の幅いっぱいに */
+            max-width: 800px; /* 例：PDF表示領域の最大幅 */
+        }
+        .pdf-page {
+            border-bottom: 1px solid #eee; /* ページ間に線を引く */
+            padding-bottom: 20px; /* 各ページの下に余白 */
+            margin-bottom: 20px; /* 各ページの下にマージン */
+        }
+         .pdf-page canvas {
+             display: block; /* canvasの下にできるわずかな隙間をなくす */
+             margin: 0 auto; /* ページを中央揃え */
+         }
+
+         /* レイアウト用スタイル */
+
+/* サイト全体ラッパー - Flexboxで子要素（サイドバーとメインコンテンツ）を横に並べる */
+.site-wrapper {
+    display: flex; /* Flexコンテナにする */
+    min-height: 100vh; /* サイト全体の最小高さをビューポートいっぱいに（任意） */
+}
+
+/* 左サイドバー */
+.sidebar {
+    width: 250px; /* サイドバーの固定幅 */
+    flex-shrink: 0; /* サイドバーが縮まないように */
+    background-color: #f4f4f4; /* サイドバーの背景色（例）*/
+    padding: 20px; /* 内側の余白 */
+    overflow-y: auto; /* コンテンツがはみ出したらスクロールできるように */
+    border-right: 1px solid #ccc; /* メインコンテンツとの区切り線 */
+}
+
+/* サイドバー内の記事一覧リスト */
+#article-list {
+    list-style: none; /* リストのデフォルトのマーカーを削除 */
+    padding: 0; /* リストのデフォルトパディングを削除 */
+    margin: 0; /* リストのデフォルトマージンを削除 */
+}
+
+#article-list li {
+    margin-bottom: 10px; /* リスト項目間の余白 */
+}
+
+#article-list a {
+    text-decoration: none; /* リンクの下線をなくす */
+    color: #333; /* リンクの色 */
+    display: block; /* クリック領域を広げる */
+    padding: 5px 0; /* クリック領域の内側余白 */
+    transition: color 0.3s ease; /* ホバー時の変化を滑らかに */
+}
+
+#article-list a:hover {
+    color: #0077CC; /* ホバー時の色（例）*/
+}
+
+
+/* 右メインコンテンツ */
+.main-content {
+    flex-grow: 1; /* 残りの幅を全て使用 */
+    padding: 20px; /* 内側の余白 */
+    overflow-y: auto; /* コンテンツがはみ出したらスクロールできるように */
+}
+
+/* メインコンテンツ内のタイトル */
+.main-content h1 {
+    margin-top: 0; /* 上の余白をリセット */
+    margin-bottom: 20px; /* 下に余白 */
+}
+
+
+/* レスポンシブ対応 - モバイル向けレイアウト */
+/* 画面幅が768px以下の場合 */
+@media (max-width: 768px) {
+    /* サイト全体ラッパー - 子要素を縦に並べる */
+    .site-wrapper {
+        flex-direction: column; /* 子要素を縦積みに */
+    }
+
+    /* 左サイドバー */
+    .sidebar {
+        width: 100%; /* 幅を100%に */
+        height: auto; /* 高さはコンテンツに合わせる */
+        border-right: none; /* 区切り線をなくす */
+        border-bottom: 1px solid #ccc; /* 下に区切り線 */
+    }
+
+    /* 右メインコンテンツ */
+    .main-content {
+        width: 100%; /* 幅を100%に */
+    }
+}
+/* サイドバー内のHOMEリンクのスタイル */
+
+/* HOMEリンクコンテナ */
+.sidebar .home-link {
+    margin-bottom: 20px; /* 記事一覧タイトルとの間に下余白 */
+    padding-bottom: 15px; /* リンクの下にパディング */
+    border-bottom: 1px solid #ccc; /* 下に薄い区切り線 */
+}
+
+/* HOMEリンクのテキストスタイル */
+.sidebar .home-link a {
+    text-decoration: none; /* デフォルトの下線をなくす */
+    color: #333; /* テキストの色を濃いグレーに */
+    font-weight: bold; /* テキストを太字に */
+    display: block; /* クリック領域を広げる */
+    font-size: 1.1em; /* フォントサイズを少し大きく */
+}
+
+/* HOMEリンクのホバー効果 */
+.sidebar .home-link a:hover {
+    color: #0077CC; /* マウスカーソルを合わせた時の色をスカイブルー系に */
+}
+    </style>
+</head>
+<body>
+
+    <div class="site-wrapper">
+
+        <div class="sidebar">
+            <div class="home-link">
+                <a href="https://ashiras.io/">HOME</a>
+           </div>
+
+            <h2>記事一覧</h2>
+            <ul id="article-list">
+                <li><a href="#">読み込み中...</a></li> </ul>
+        </div>
+
+        <div class="main-content">
+            <div id="pdf-viewer">
+                <p>記事を選択してください。</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs" type="module"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.min.mjs" type="module"></script>
+
+    <script src="script.js" type="module"></script>
+
+</body>
+</html>
