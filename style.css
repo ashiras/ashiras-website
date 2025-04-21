@@ -103,7 +103,7 @@ section {
   /* background-color は画像になるため不要 */
   text-align: center; /* テキストを中央揃えに */
   padding: 100px 0; /* 上下にたっぷりの余白 */
-  min-height: 100vh; /* 画面の高さの60%以上の高さを確保 */
+  min-height: 85vh; /* 画面の高さの60%以上の高さを確保 */
   display: flex; /* コンテンツを中央に配置するためにFlexboxを使用 */
   justify-content: center; /* 水平方向の中央揃え */
   align-items: center; /* 垂直方向の中央揃え */
