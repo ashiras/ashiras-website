@@ -403,7 +403,7 @@ footer .container p {
   /* ヒーローセクション */
   #hero {
       padding: 80px 0; /* 上下の余白を調整 */
-      min-height: 50vh; /* 高さを調整 */
+      min-height: 100vh; /* 高さを調整 */
   }
 
   #hero h1 {
