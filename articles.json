@@ -1,5 +1,12 @@
 [
   {
+    "id": "waterfall_agile",
+    "title": "ウォーターフォールとアジャイルのトポロジー",
+    "filename": "blogs/waterfall_agile.md",
+    "date": "2025-04-22",
+    "tags": ["topology"]
+  },  
+  {
     "id": "structuring_for_web_apps",
     "title": "Webアプリに対する構造化",
     "filename": "blogs/structuring_for_web_apps.md",
