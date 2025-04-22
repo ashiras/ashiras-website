@@ -10,7 +10,6 @@
 // その場合、articles.json の最初の記事が自動的に表示されます。
 let defaultInitialArticleUrl = './blogs/sagawa_semantic_space_human_ai.md';
 
-
 // Markdownコンテンツを表示する領域（以前のPDF表示領域を再利用）
 const markdownViewer = document.getElementById('pdf-viewer'); // IDはそのまま使用
 
@@ -60,6 +59,8 @@ async function renderMarkdown(articleData) {
     }
     // ★★★ 追加終わり ★★★
 
+    const url = new URL(window.location.href.split('?')[0]);
+    history.replaceState("", "", `${url}?id=${articleData.id}`); // URLのクエリパラメータを更新
 
     try {
         // Markdownファイルの内容をテキストとして読み込み（articleData.filename を使用）
