@@ -13,7 +13,6 @@
     "filename": "blogs/structuring_for_web_apps.md",
     "date": "2025-04-21",
     "tags": ["Web"],
-    "keywords": ["Webアプリ", "構造化"],
     "description": "WebアプリのUIを構造的に捉え直す。Web Componentsとフレームワーク連携で再利用性・保守性・UXを強化"
   },
   {
@@ -22,7 +21,6 @@
     "filename": "blogs/semantic_prompting.md",
     "date": "2025-04-20",
     "tags": ["AI"],
-    "keywords":["セマンティック", "プロンプティング"],
     "description": "セマンティック・プロンプティングとは何か？AIとの対話を“意味”で設計する新しい開発文化への提言"
   }
 ]
