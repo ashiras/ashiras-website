@@ -156,9 +156,6 @@ async function loadArticleList() {
                 // Optional: モバイル表示でメニューを閉じるなどの処理をここに追加することも考えられます
             });
 
-             // リスト項目にタイトルリンクを追加
-            listItem.appendChild(link);
-
             // 日付データがある場合、またはタグデータがある場合のみ、このメタ情報コンテナを追加
             if (article.date || (article.tags && article.tags.length > 0)) {
                  if (article.date) {
@@ -169,6 +166,9 @@ async function loadArticleList() {
                  }
                 listItem.appendChild(metaInfoContainer); // コンテナをリスト項目に追加
             }
+
+            // リスト項目にタイトルリンクを追加
+            listItem.appendChild(link);
 
             articleListElement.appendChild(listItem); // 生成したリスト項目を記事一覧に追加
 
