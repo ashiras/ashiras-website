@@ -25,7 +25,25 @@
 
     <!-- Marked.js ライブラリの読み込み (CDN) -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-
+    <script>
+        MathJax = {
+          tex: {
+            // インライン数式として認識する区切り文字のペアを設定
+            // ['$', '$'] を追加することで、$ ... $ を有効化します
+            // ['\\(', '\\)'] はデフォルトで有効な \(...\) です
+            inlineMath: [['$', '$'], ['\\(', '\\)']]
+          },
+          // SVG出力に関するオプション（任意ですが、表示品質などに影響）
+          svg: {
+            fontCache: 'global' // フォントキャッシュ設定
+          }
+          // その他の設定が必要であればここに追加
+        };
+        </script>
+    
+        <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+    
+    
     <style>
         /* ここは基本的なリセットや共通スタイルとして残しておきます */
         body { margin: 0; padding: 0; font-family: sans-serif; } /* 簡単なボディスタイル */

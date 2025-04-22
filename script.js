@@ -1,10 +1,11 @@
 // script.js
 
 // Marked.js ライブラリは HTML で <script> タグで読み込んでいるため、marked.parse() などがグローバルに利用可能
+// MathJax ライブラリも HTML で <script> タグで読み込んでいるため、MathJax オブジェクトがグローバルに利用可能
 
 
 // TODO: 初期表示したい記事のMarkdownファイルのパスを記述してください
-let currentArticleUrl = './blogs/sagawa_semantic_space_human_ai.md'; // 初期表示するMarkdownファイルのパス
+let currentArticleUrl = null; // 初期表示するMarkdownファイルのパス
 
 // Markdownコンテンツを表示する領域（以前のPDF表示領域を再利用）
 const markdownViewer = document.getElementById('pdf-viewer'); // IDはそのまま使用
@@ -44,7 +45,6 @@ function formatDate(dateString) {
     return parts.join(' '); // 整形された日付文字列を返す
 }
 
-
 // Markdownファイルを読み込み、HTMLに変換して表示する関数
 async function renderMarkdown(markdownUrl) {
     // 以前の表示内容をクリアし、読み込み中のメッセージを表示
@@ -59,18 +59,32 @@ async function renderMarkdown(markdownUrl) {
         const markdownText = await response.text();
 
         // Marked.js を使って Markdown を HTML に変換
-        // marked.parse() を使用します
         const htmlContent = marked.parse(markdownText); // Marked.js 4.0.0 以降は parse() を推奨
 
         // 変換したHTMLをMarkdown表示領域に表示
         markdownViewer.innerHTML = htmlContent;
+
+        // ★★★ 追加：MathJax に、新しく表示されたコンテンツの数式をレンダリングさせる ★★★
+        // Marked.js で変換された HTML が DOM に追加された後に MathJax を実行します。
+        // MathJax.typesetPromise() は非同期でレンダリングを行い、完了を Promise で返します。
+        // #pdf-viewer (markdownViewer) 要素内の数式をレンダリング対象とします。
+        // MathJax は HTML で <script> タグで読み込んでいるため、window.MathJax として利用可能
+        if (window.MathJax) { // MathJax が読み込まれているかチェック
+             await MathJax.typesetPromise([markdownViewer]); // markdownViewer 要素内の数式をレンダリング
+        } else {
+             // MathJax がまだ読み込まれていない場合やエラーの場合
+             console.warn("MathJax is not loaded. 数式が表示されない可能性があります。");
+             // 必要であれば、MathJax の読み込み完了を待つか、代替処理を実装することも考えられます
+             // 例：MathJax が読み込まれたら一度だけ typeset を実行するイベントリスナーを設定するなど
+        }
+        // ★★★ 追加終わり ★★★
+
 
     } catch (error) {
         console.error('Markdownファイルの読み込みまたは変換中にエラーが発生しました:', error);
         markdownViewer.innerHTML = '<p>記事の読み込みに失敗しました。ファイルが存在するか確認してください。</p>';
     }
 }
-
 
 // 記事一覧データを読み込み、リストを表示する関数
 async function loadArticleList() {
@@ -89,8 +103,8 @@ async function loadArticleList() {
         articles.forEach(article => {
             const listItem = document.createElement('li');
             const link = document.createElement('a'); // 記事タイトルリンク
-            const metaInfoContainer = document.createElement('div'); // ★追加：日付とタグを囲むコンテナを作成 ★
-            metaInfoContainer.classList.add('meta-info'); // スタイルのためのクラスを追加
+            const metaInfoContainer = document.createElement('div'); // 日付とタグを囲むコンテナ
+            metaInfoContainer.classList.add('meta-info');
 
             const dateElement = document.createElement('p'); // 日付表示用の要素
             const tagsContainer = document.createElement('div'); // タグ表示用のコンテナ
@@ -137,7 +151,6 @@ async function loadArticleList() {
             });
 
 
-            // ★追加：日付とタグを囲むコンテナに、日付要素とタグコンテナを追加 ★
             // 日付データがある場合、またはタグデータがある場合のみ、このメタ情報コンテナを追加
             if (article.date || (article.tags && article.tags.length > 0)) {
                  if (article.date) {
