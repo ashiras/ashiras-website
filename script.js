@@ -60,7 +60,7 @@ async function renderMarkdown(articleData) {
     // ★★★ 追加終わり ★★★
 
     const url = new URL(window.location.href.split('?')[0]);
-    history.replaceState("", "", `${url}?id=${articleData.id}`); // URLのクエリパラメータを更新
+    history.replaceState('', '', `${url}?id=${articleData.id}`); // URLのクエリパラメータを更新
 
     try {
         // Markdownファイルの内容をテキストとして読み込み（articleData.filename を使用）
