@@ -126,12 +126,12 @@ async function loadArticleList() {
                 event.target.classList.add('active');
             });
 
-            listItem.appendChild(link);
             if (article.date || (article.tags && Array.isArray(article.tags) && article.tags.length > 0)) {
                  if (article.date) { metaInfoContainer.appendChild(dateElement); }
                  if (article.tags && Array.isArray(article.tags) && article.tags.length > 0) { metaInfoContainer.appendChild(tagsContainer); }
                 listItem.appendChild(metaInfoContainer);
             }
+            listItem.appendChild(link);
             articleListElement.appendChild(listItem);
         });
 
