@@ -3,24 +3,53 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ashiras, inc. — 生成AIの軌道設計と、フレームワーク非依存のUI基盤。</title>
-  <meta name="description" content="アシラスは二つの技術基盤を別に持つ。生成AIの軌道設計と、フレームワークに依存しないフロントエンド。思想は同じでも、プロダクトは別物です。">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <!-- 基本SEOメタタグ -->
+  <title>Ashiras, inc. | 生成AIの軌道設計と、フレームワーク非依存のUI基盤。</title>
+  <meta name="description" content="アシラスは二つの技術基盤を別々に持つ。生成AIの軌道設計と、フレームワークに依存しないフロントエンド。">
+  <meta name="keywords" content="生成AI, 軌道設計, Trajectory Design, UI Core, Web Components, フレームワーク非依存, 数理物理学, アシラス, Ashiras">
   <link rel="canonical" href="https://ashiras.io/">
   <meta name="theme-color" content="#f6f3ec">
 
+  <!-- OGP / SNS Card Settings -->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Ashiras, inc.">
-  <meta property="og:locale" content="ja_JP">
-  <meta property="og:title" content="Ashiras, inc. — 生成AIの軌道設計と、フレームワーク非依存のUI基盤。">
-  <meta property="og:description" content="確率的揺らぎを工学的な確実性へ。生成AIの軌道設計。フレームワーク非依存のUIコア。戦線は二つある。">
   <meta property="og:url" content="https://ashiras.io/">
-  <meta property="og:image" content="https://ashiras.io/assets/images/1_4Jtf8ld2Pe3K7j8svJJ4Qg.webp">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:title" content="Ashiras, inc. | 生成AIの軌道設計と、フレームワーク非依存のUI基盤。">
+  <meta property="og:description" content="確率的揺らぎを工学的な確実性へ。生成AIの軌道設計。フレームワーク非依存のUI Core。私たちが提示する解は2つ。">
+  <meta property="og:image" content="https://ashiras.io/assets/images/ogp.svg">
+  <meta property="og:site_name" content="Ashiras, inc.">
 
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ashiras, inc. | 生成AIの軌道設計と、フレームワーク非依存のUI基盤。">
+  <meta name="twitter:description" content="確率的揺らぎを工学的な確実性へ。生成AIの軌道設計。フレームワーク非依存のUI Core。">
+  <meta name="twitter:image" content="https://ashiras.io/assets/images/ogp.svg">
+
+  <!-- 構造化データ（JSON-LD）: Google検索エンジンへの企業情報提供 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Corporation",
+    "name": "アシラス株式会社 (Ashiras, inc.)",
+    "url": "https://ashiras.io/",
+    "logo": "https://ashiras.io/assets/images/logo_header.svg",
+    "description": "確率的揺らぎを工学的な確実性へ。数理物理学の視座から生成AIの軌道設計と、フレームワーク非依存のフロントエンド基盤を提供する技術プロフェッショナル企業。",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "若木町4丁目4-3",
+      "addressLocality": "神戸市須磨区",
+      "addressRegion": "兵庫県",
+      "postalCode": "654-0014",
+      "addressCountry": "JP"
+    }
+  }
+  </script>
+
+  <!-- Fonts & CSS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
     :root {
       --paper: #f6f3ec;
@@ -78,9 +107,15 @@
     .kicker { color: var(--cyan); font-size: 12px; margin-bottom: 22px; }
     h1 { font-size: clamp(2.1rem, 5vw, 3.5rem); font-weight: 700; line-height: 1.22; letter-spacing: -.03em; }
     h1 em { font-style: normal; color: var(--cyan); }
+    
     .lead { margin-top: 22px; color: var(--muted); max-width: 36em; }
+    .lead-list { margin-top: 14px; color: var(--muted); list-style: none; display: grid; gap: 10px; max-width: 38em; }
+    .lead-list li { position: relative; padding-left: 24px; }
+    .lead-list li::before { content: "—"; position: absolute; left: 0; color: var(--cyan); font-weight: 600; }
+    .lead-list strong { color: var(--ink); font-weight: 500; }
+
     .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
-    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 18px; border: 1px solid transparent; font-size: 14px; text-decoration: none !important; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 18px; border: 1px solid transparent; font-size: 14px; text-decoration: none !important; cursor: pointer; }
     .btn-solid { background: var(--ink); color: #fff; }
     .btn-ghost { border-color: var(--line); color: var(--ink); background: var(--paper-2); }
 
@@ -95,6 +130,8 @@
     .idx { color: var(--amber); font-size: 12px; margin-bottom: 10px; }
     h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -.02em; margin-bottom: 16px; }
     .desc { color: var(--muted); max-width: 46em; margin-bottom: 40px; }
+    
+    .math-block { background: var(--paper-2); border: 1px solid var(--line); padding: 16px 24px; margin: 20px 0; font-family: "IBM Plex Mono", monospace; color: var(--cyan); display: inline-block;}
 
     .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
     .card {
@@ -121,6 +158,22 @@
     dt { color: var(--dim); font-size: 12px; }
     dd { font-size: .95rem; }
 
+    .form { display: grid; gap: 14px; }
+    .field { display: grid; gap: 6px; }
+    .field span { color: var(--dim); font-size: 12px; }
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      background: var(--paper-2);
+      color: var(--ink);
+      font: inherit;
+      padding: 12px 14px;
+    }
+    .field textarea { min-height: 160px; resize: vertical; }
+    .hp { position: absolute; left: -9999px; }
+
     footer { border-top: 1px solid var(--line); padding: 48px 0 64px; color: var(--dim); font-size: 13px; position: relative; z-index: 1; }
     footer .brand { margin-bottom: 14px; }
 
@@ -137,14 +190,13 @@
       .orbit-box { height: 280px; }
       .cell { padding: 14px 16px; }
     }
-
   </style>
 </head>
 <body>
   <header>
     <div class="wrap nav">
       <a class="brand" href="#">
-        <img src="assets/images/logo_header.svg">
+        <img src="assets/images/logo_header.svg" alt="Ashiras.io">
       </a>
       <nav id="nav">
         <button class="menu-btn mono" type="button" onclick="document.getElementById('nav').classList.toggle('open')">MENU</button>
@@ -153,6 +205,7 @@
           <li><a href="#evolution">Trajectory</a></li>
           <li><a href="#frontend">Front-end</a></li>
           <li><a href="#about">Company</a></li>
+          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -163,9 +216,17 @@
       <div>
         <p class="kicker mono">01 / MATHEMATICAL PHYSICS × ENGINEERING</p>
         <h1>確率的揺らぎを、<br><em>工学的な確実性</em>へ。</h1>
-        <p class="lead">戦線は二つある。生成AIでは、出力をうまく促すのではなく軌道として設計する。フロントエンドでは、流行りのフレームワークにアプリを乗せない。どちらも別プロダクトとして、別の現場で使われている。</p>
+        
+        <!-- 修正箇所：リストタグによる構造化 -->
+        <p class="lead">理論と実践を往復する深い探究から導き出した、</p>
+        <strong>展開する技術基盤は2つ。</strong>
+        <ul class="lead-list">
+          <li><strong>生成AI領域</strong>では、出力を促すのではなく「軌道」として設計する。</li>
+          <li><strong>フロントエンド領域</strong>では、流行りのフレームワークにUIライブラリの寿命を依存させない。</li>
+        </ul>
+
         <div class="cta">
-          <a class="btn btn-solid" href="#evolution">設計の軌跡を見る →</a>
+          <a class="btn btn-solid" href="#contact">相談する →</a>
           <a class="btn btn-ghost" href="https://portableagent.run/" target="_blank" rel="noopener">Portable Agent ↗</a>
           <a class="btn btn-ghost" href="https://color-concept.ashiras.io/" target="_blank" rel="noopener">Color Concept ↗</a>
         </div>
@@ -186,13 +247,13 @@
       <div class="grid2">
         <article class="card">
           <div class="tags mono"><span class="tag">Product 01</span><span class="tag">Generative AI</span></div>
-          <h3>軌道設計</h3>
-          <p>モデルを賢くする仕事ではない。止める点、固定する点、引き戻す点をアーキテクチャ側に置く。Portable Agent と multi-ai-cli は、この軸のプロダクトです。</p>
+          <h3>Trajectory Design</h3>
+          <p>モデルを賢くする仕事ではない。止める点、固定する点、引き戻す点をアーキテクチャ側に置く。Portable Agent と multi-ai-cli は、この軸のプロダクトである。</p>
         </article>
         <article class="card">
           <div class="tags mono"><span class="tag">Product 02</span><span class="tag">Front-end</span></div>
-          <h3>UIコア</h3>
-          <p>React や Angular の寿命に、アプリの寿命を縛らない。見た目と振る舞いをピュアJSのコアに切り出す。Elem UI は、この軸のプロダクトです。</p>
+          <h3>UI Core</h3>
+          <p>React や Angular 、Vue の寿命に、UIライブラリの寿命を縛らない。見た目と振る舞いをピュアJSのコアに切り出す。Elem UI は、この軸のプロダクトである。</p>
         </article>
       </div>
     </div>
@@ -201,17 +262,17 @@
       <div class="wrap">
         <p class="idx mono">02 / GENERATIVE AI ARCHITECTURE</p>
         <h2>AIを「設計問題」として解く</h2>
-        <p class="desc">生成AIの出力は本質的に確率的です。最新論文を追うのではなく、「状態空間における軌道のズレ」として定式化し、大規模開発の現場で回る軌道設計に落とします。中を賢くするな。外を設計しろ。</p>
+        <p class="desc">生成AIの出力は本質的に確率的である。最新論文を追うのではなく、「状態空間における軌道のズレ」として定式化し、大規模開発の現場で回る Trajectory Design に落とし込む。中を賢くするな。外を設計しろ。</p>
         <div class="grid2">
           <article class="card">
             <div class="tags mono"><span class="tag">Softmax Crowding</span><span class="tag">Semantic Drift</span></div>
             <h3>確率的AIの軌道制御</h3>
-            <p>コンテキスト長 N の増大で初期制約の注意確率 P<sub>N</sub> は死滅する。続く自己回帰は D<sub>t+1</sub> = D<sub>t</sub> + g<sub>t</sub>(D<sub>t</sub>) + η<sub>t</sub> − δ<sub>t</sub> としてズレを積む。プロンプトを磨くのではなく、止める点・固定する点・照合する点・引き戻す点をアーキテクチャが持つ。</p>
+            <p>コンテキスト長 N の増大で初期制約の注意確率 P<sub>N</sub> は死滅する。続く自己回帰はズレを蓄積する。プロンプトを磨くのではなく、止める点・固定する点・照合する点・引き戻す点をアーキテクチャが担う。</p>
           </article>
           <article class="card">
             <div class="tags mono"><span class="tag">Trajectory Design</span><span class="tag">Control State</span></div>
             <h3>Rollback ≠ Recovery</h3>
-            <p>履歴を戻すことと、正常な制御状態へ戻すことは別問題である。局所整合ではなく Artifact の外部固定を優先し、人間ゲートをハブにした復帰条件を設計対象にする。</p>
+            <p>履歴を巻き戻すことと、正常な制御状態（Control State）へ復帰することは別問題である。局所整合ではなく Artifact の外部固定を優先し、人間ゲートをハブにした復帰条件を設計対象とする。</p>
           </article>
         </div>
       </div>
@@ -221,7 +282,11 @@
       <div class="wrap">
         <p class="idx mono">03 / PARADIGM SHIFT</p>
         <h2>現象を式に書き、現場に落とす。</h2>
-        <p class="desc">意味の drift、長文の crowding、Agent の発散、Harness、Plan / Rewind も、先に観測されるふるまいとして扱う。それを設計変数へ写す。ずれは自己回帰の累積 D<sub>t+1</sub> = D<sub>t</sub> + g<sub>t</sub>(D<sub>t</sub>) + η<sub>t</sub> − δ<sub>t</sub> として定義する。履歴の巻き戻しと Control State への復帰は別操作とする。Artifact は系の外へ固定し、人間ゲートを復帰条件のハブにする。論文の語彙を機能名へ写すのではなく、現場が操作できる制約へ落とすことが重要だ。</p>
+        <p class="desc" style="margin-bottom:0">意味の drift、長文の crowding、Agent の発散、Harness、Plan / Rewind も、先に観測されるふるまいとして扱う。それを設計変数へ写す。ずれは自己回帰の累積として定義する。</p>
+        <div class="math-block">
+            D<sub>t+1</sub> = D<sub>t</sub> + g<sub>t</sub>(D<sub>t</sub>) + η<sub>t</sub> − δ<sub>t</sub>
+        </div>
+        <p class="desc">履歴の巻き戻しと Control State への復帰は別操作とする。Artifact は系の外へ固定し、人間ゲートを復帰条件のハブにする。論文の語彙を機能名へ写すのではなく、現場が操作できる制約へ落とすことが重要である。</p>
         <div class="track">
           <div class="row mono">
             <div class="col-h">t</div>
@@ -304,27 +369,27 @@
       </div>
     </section>
 
-<section id="frontend">
-  <div class="wrap">
-    <p class="idx mono">04 / FRONT-END ENGINEERING</p>
-    <h2>フレームワークを追うな。コアを置け。</h2>
-    <p class="desc">UIパーツが持つのは、見た目と振る舞いである。React や Angular が持つのは、ページを組み立て、状態を持ち、更新を配る層である。層が違うものを、同じ文法の上に置くな。ボタンを React コンポーネントとして書く必要はない。マルチフレームワークの現場では、それが再利用できるかどうかそのものになる。コアは DOM と純関数に置き、枠ごとの書き味だけ薄いラッパーに残す。</p>
-    <div class="grid2">
-      <article class="card">
-        <div class="tags mono"><span class="tag">Web Components</span><span class="tag">Pure JS</span></div>
-        <h3>UIパーツとフレームワークは、層が違う</h3>
-        <p>パーツを枠の寿命に縛った瞬間、Angular の管理画面と React の新規アプリで、同じボタンを二度書くことになる。コアを純関数と DOM 標準に置けば、素の HTML からも同じ振る舞いが出る。CVA も状態転写も皮で足りる。寄せるのは呼び出し側だけだ。マルチフレームワークを採用するほど、依存の向きはこう逆になる。</p>
-      </article>
-      <article class="card">
-        <div class="tags mono"><span class="tag">Color Concept</span><span class="tag">Palette Engineering</span></div>
-        <h3>配色を、感覚ではなく計算にする</h3>
-        <p>デザイナーが画面の上で置いている色の配置を、工学側で出す。メインカラーから補色のアクセント、同系色のベース、背景輝度に対する文字色を計算する。現場で使っているものを公開した。</p>
-        <p style="margin-top:14px">補色で視線をボタンと通知へ送る。同系色で白背景より階層を出す。輝度から白／黒を自動判定し、無彩色でも同化させない。</p>
-        <p style="margin-top:14px"><a href="https://color-concept.ashiras.io/" target="_blank" rel="noopener">Color Concept →</a></p>
-      </article>
-    </div>
-  </div>
-</section>
+    <section id="frontend">
+      <div class="wrap">
+        <p class="idx mono">04 / FRONT-END ENGINEERING</p>
+        <h2>フレームワークを追うな。コアを置け。</h2>
+        <p class="desc">UIパーツが持つのは、見た目と振る舞いである。React や Angular が持つのは、ページを組み立て、状態を持ち、更新を配る層である。層が違うものを、同じ文法の上に置くな。ボタンを React コンポーネントとして書く必要はない。マルチフレームワークの現場では、それが再利用できるかどうかそのものになる。コアは DOM と純関数に置き、枠ごとの書き味だけ薄いラッパーに残す。表舞台に出ることはないが、すでに多くの上場企業の裏側で、この UI Core が静かにシステムを支え続けている。</p>
+        <div class="grid2">
+          <article class="card">
+            <div class="tags mono"><span class="tag">Web Components</span><span class="tag">Pure JS</span></div>
+            <h3>UIパーツとフレームワークは、層が違う</h3>
+            <p>パーツを枠の寿命に縛った瞬間、Angular の管理画面と React の新規アプリで、同じボタンを二度書くことになる。コアを純関数と DOM 標準に置けば、素の HTML からも同じ振る舞いが出る。CVA も状態転写も皮で足りる。寄せるのは呼び出し側だけだ。マルチフレームワークを採用するほど、依存の向きはこう逆になる。</p>
+          </article>
+          <article class="card">
+            <div class="tags mono"><span class="tag">Color Concept</span><span class="tag">Palette Engineering</span></div>
+            <h3>配色を、感覚ではなく計算にする</h3>
+            <p>デザイナーが画面の上で置いている色の配置を、工学側で出す。メインカラーから補色のアクセント、同系色のベース、背景輝度に対する文字色を計算する。現場で使っているものを公開した。</p>
+            <p style="margin-top:14px">補色で視線をボタンと通知へ送る。同系色で白背景より階層を出す。輝度から白／黒を自動判定し、無彩色でも同化させない。</p>
+            <p style="margin-top:14px"><a href="https://color-concept.ashiras.io/" target="_blank" rel="noopener">Color Concept →</a></p>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <section id="about">
       <div class="wrap">
@@ -333,7 +398,7 @@
         <div class="grid2" style="align-items:start">
           <div>
             <h3 style="margin-bottom:12px">一つの思想、二つの基盤</h3>
-            <p class="desc" style="margin-bottom:0">生成AIでは軌道を置く。フロントではコアを置く。配色は計算する。外を設計し、現場は分ける。</p>
+            <p class="desc" style="margin-bottom:0">生成AI領域では軌道を置く。フロントエンド領域ではコアを置く。配色は計算する。外を設計し、現場は分ける。</p>
             <p class="desc" style="margin-bottom:0">自由度を内側に足しても、軌道は安定しない。モデルを大きくしても、フレームワークを厚くしても、ずれは内側で増える。安定するのは固定点である。生成列なら止める点と復帰条件。UIなら見た目と振る舞いのコア。配色なら補色・同系色・輝度の関係。先にそれを外へ置く。内側は、その上で交換してよい。</p>
           </div>
           <div class="card">
@@ -350,6 +415,45 @@
         </div>
       </div>
     </section>
+
+    <section id="contact">
+    <div class="wrap">
+        <p class="idx mono">06 / CONTACT</p>
+        <h2>問い合わせる</h2>
+        <div class="card" style="max-width:720px">
+        <form id="contact-form" class="form" action="https://formspree.io/f/mqpkvnaj" method="POST">
+            <input type="hidden" name="_subject" value="Ashiras.io 問い合わせ">
+            <input class="hp" type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+
+            <label class="field">
+            <span class="mono">Name</span>
+            <input type="text" name="name" required placeholder="例: 山田 太郎">
+            </label>
+            <label class="field">
+            <span class="mono">Email</span>
+            <input type="email" name="email" required placeholder="例: yamada@example.com">
+            </label>
+            <label class="field">
+            <span class="mono">Subject</span>
+            <select name="subject" required>
+                <option value="軌道設計">Trajectory Design / Portable Agent</option>
+                <option value="UI Core">UI Core / Elem UI</option>
+                <option value="配色">配色 / Color Concept</option>
+                <option value="その他">その他</option>
+            </select>
+            </label>
+            <label class="field">
+            <span class="mono">Message</span>
+            <textarea name="message" required placeholder="システムのアーキテクチャ設計に関するご相談など、お気軽にお書きください。"></textarea>
+            </label>
+
+            <button class="btn btn-solid" type="submit">送信する</button>
+            <p id="form-status" class="mono" style="display:none;color:var(--cyan);font-size:13px;margin-top:12px;"></p>
+
+        </form>
+        </div>
+    </div>
+    </section>
   </main>
 
   <footer>
@@ -363,4 +467,38 @@
     </div>
   </footer>
 </body>
+<script>
+  const form = document.getElementById("contact-form");
+  const status = document.getElementById("form-status");
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const button = form.querySelector("button[type='submit']");
+    button.disabled = true;
+    status.style.display = "none";
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" }
+      });
+
+      if (response.ok) {
+        form.reset();
+        status.textContent = "✓ メッセージを送信しました。ご連絡ありがとうございます！";
+        status.style.color = "var(--cyan)";
+      } else {
+        status.textContent = "送信に失敗しました。時間をおいて再度送ってください。";
+        status.style.color = "var(--amber)";
+      }
+    } catch (error) {
+      status.textContent = "送信に失敗しました。時間をおいて再度送ってください。";
+      status.style.color = "var(--amber)";
+    }
+
+    status.style.display = "block";
+    button.disabled = false;
+  });
+</script>
 </html>
