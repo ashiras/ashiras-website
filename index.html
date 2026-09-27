@@ -1,167 +1,366 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="utf-8">
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ashiras, inc. - AI/Web技術コンサルティング</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ashiras, inc. — 生成AIの軌道設計と、フレームワーク非依存のUI基盤。</title>
+  <meta name="description" content="アシラスは二つの技術基盤を別に持つ。生成AIの軌道設計と、フレームワークに依存しないフロントエンド。思想は同じでも、プロダクトは別物です。">
+  <link rel="canonical" href="https://ashiras.io/">
+  <meta name="theme-color" content="#f6f3ec">
 
-    <base href="/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Ashiras, inc.">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:title" content="Ashiras, inc. — 生成AIの軌道設計と、フレームワーク非依存のUI基盤。">
+  <meta property="og:description" content="確率的揺らぎを工学的な確実性へ。生成AIの軌道設計。フレームワーク非依存のUIコア。戦線は二つある。">
+  <meta property="og:url" content="https://ashiras.io/">
+  <meta property="og:image" content="https://ashiras.io/assets/images/1_4Jtf8ld2Pe3K7j8svJJ4Qg.webp">
+  <meta name="twitter:card" content="summary_large_image">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Ashiras, inc. は、Web技術を利用したエンタープライズ・アプリケーションを開発・コンサルティングしている企業です。">
-    <title>Ashiras, inc.</title>
-    <meta property="og:site_name" content="Ashiras, inc.">
-    <meta property="og:locale" content="ja_JP">
-    
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+JP:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <meta property="og:title" content="Ashiras, inc. - AI/Web技術コンサルティング">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ashiras.io/">
-    <meta property="og:image" content="https://ashiras.io/assets/images/1_4Jtf8ld2Pe3K7j8svJJ4Qg.webp">
-    <meta property="og:description" content="アシラス株式会社はAIパイプライン、モダンWeb、データマネジメントの専門家です。最先端技術の研究開発から実践的な導入、技術コンサルティングまで一貫支援。豊富な実績と確かな技術力で、お客様のビジネス成長を加速します。">
-    <meta property="og:site_name" content="Ashiras, inc.">
-    <meta property="og:locale" content="ja_JP">
+  <style>
+    :root {
+      --paper: #f6f3ec;
+      --paper-2: #fffdf8;
+      --ink: #1c2430;
+      --muted: #5b6674;
+      --dim: #8b95a1;
+      --line: rgba(28, 36, 48, .10);
+      --cyan: #0b7cab;
+      --cyan-soft: #d7eef7;
+      --amber: #c9841a;
+      --max: 1180px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "IBM Plex Sans JP", sans-serif;
+      background:
+        radial-gradient(900px 420px at 88% -8%, rgba(11,124,171,.10), transparent 55%),
+        radial-gradient(700px 380px at 0% 12%, rgba(201,132,26,.08), transparent 50%),
+        var(--paper);
+      color: var(--ink);
+      line-height: 1.75;
+    }
+    body::before {
+      content: "";
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: radial-gradient(ellipse at center, #000 35%, transparent 82%);
+      opacity: .55;
+    }
+    a { color: var(--cyan); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; position: relative; z-index: 1; }
+    .mono { font-family: "IBM Plex Mono", monospace; letter-spacing: .04em; }
 
-    <meta name="description" content="アシラス株式会社はモダンWeb、AIパイプライン、データマネジメントの専門家です。最先端技術の研究開発から実践的な導入、技術コンサルティングまで一貫支援。豊富な実績と確かな技術力で、お客様のビジネス成長を加速します。"> 
-    <meta name="twitter:card" content="summary_large_image">
+    header {
+      position: sticky; top: 0; z-index: 20;
+      backdrop-filter: blur(16px);
+      background: rgba(246,243,236,.82);
+      border-bottom: 1px solid var(--line);
+    }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .brand { display: flex; align-items: center; gap: 12px; color: var(--ink); text-decoration: none; font-weight: 600; }
+    .mark { width: 28px; height: 28px; }
+    nav ul { display: flex; gap: 28px; list-style: none; }
+    nav a { color: var(--muted); font-size: 13px; text-decoration: none; }
+    nav a:hover { color: var(--ink); }
+    .menu-btn { display: none; background: var(--paper-2); border: 1px solid var(--line); color: var(--ink); padding: 8px 10px; }
 
-    <link rel="canonical" href="https://ashiras.io/">
+    .hero { padding: 100px 0 48px; display: grid; grid-template-columns: 1.15fr .85fr; gap: 48px; align-items: center; }
+    .kicker { color: var(--cyan); font-size: 12px; margin-bottom: 22px; }
+    h1 { font-size: clamp(2.1rem, 5vw, 3.5rem); font-weight: 700; line-height: 1.22; letter-spacing: -.03em; }
+    h1 em { font-style: normal; color: var(--cyan); }
+    .lead { margin-top: 22px; color: var(--muted); max-width: 36em; }
+    .cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 18px; border: 1px solid transparent; font-size: 14px; text-decoration: none !important; }
+    .btn-solid { background: var(--ink); color: #fff; }
+    .btn-ghost { border-color: var(--line); color: var(--ink); background: var(--paper-2); }
 
-    <!-- Disable tap highlight on IE -->
-    <meta name="msapplication-tap-highlight" content="no">
+    .orbit-box { position: relative; height: 420px; background: var(--paper-2); border: 1px solid var(--line); }
+    .orbit-box svg { width: 100%; height: 100%; overflow: visible; }
+    .spin { transform-origin: 200px 200px; animation: spin 28s linear infinite; }
+    .spin-rev { transform-origin: 200px 200px; animation: spin 42s linear infinite reverse; }
+    @keyframes spin { to { transform: rotate(360deg); } }
 
-    <!-- Web Application Manifest -->
-    <link rel="manifest" href="manifest.json">
+    .axes { padding-bottom: 84px; }
+    section { padding: 84px 0; border-top: 1px solid var(--line); position: relative; z-index: 1; }
+    .idx { color: var(--amber); font-size: 12px; margin-bottom: 10px; }
+    h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); letter-spacing: -.02em; margin-bottom: 16px; }
+    .desc { color: var(--muted); max-width: 46em; margin-bottom: 40px; }
 
-    <!-- Add to homescreen for Chrome on Android -->
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="ashiras, inc.">
-    <link rel="icon" sizes="192x192" href="assets/icons/chrome-touch-icon-192x192.png">
+    .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .card {
+      border: 1px solid var(--line);
+      background: var(--paper-2);
+      padding: 28px;
+    }
+    .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+    .tag { font-size: 11px; color: var(--muted); background: var(--cyan-soft); padding: 3px 8px; }
+    .card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+    .card p { color: var(--muted); font-size: .95rem; }
 
-    <!-- Add to homescreen for Safari on iOS -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta name="apple-mobile-web-app-title" content="ashiras, inc.">
-    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    .track { border: 1px solid var(--line); background: var(--paper-2); }
+    .row { display: grid; grid-template-columns: 120px 1fr 1.15fr; border-top: 1px solid var(--line); }
+    .row:first-child { border-top: none; }
+    .row.now { background: var(--cyan-soft); }
+    .cell { padding: 22px 20px; }
+    .when { color: var(--cyan); font-size: 13px; }
+    .ttl { font-weight: 600; margin-bottom: 6px; }
+    .sub { color: var(--muted); font-size: .9rem; }
+    .col-h { color: var(--dim); font-size: 11px; padding: 10px 20px; text-transform: uppercase; background: #f3efe6; }
 
-    <!-- Tile icon for Win8 (144x144 + tile color) -->
-    <meta name="msapplication-TileImage" content="assets/icons/ms-touch-icon-144x144-precomposed.png">
-    <meta name="msapplication-TileColor" content="#FFFFFF">
+    dl { display: grid; grid-template-columns: 140px 1fr; gap: 10px 0; }
+    dt { color: var(--dim); font-size: 12px; }
+    dd { font-size: .95rem; }
 
-    <!-- Color the status bar on mobile devices -->
-    <meta name="theme-color" content="#2A95E4">
+    footer { border-top: 1px solid var(--line); padding: 48px 0 64px; color: var(--dim); font-size: 13px; position: relative; z-index: 1; }
+    footer .brand { margin-bottom: 14px; }
+
+    img { height: 24px; }
+
+    @media (max-width: 860px) {
+      nav ul { display: none; }
+      .menu-btn { display: block; }
+      nav.open ul {
+        display: flex; flex-direction: column; position: absolute; right: 20px; top: 68px;
+        background: var(--paper-2); border: 1px solid var(--line); padding: 16px 20px;
+      }
+      .hero, .grid2, .row { grid-template-columns: 1fr; }
+      .orbit-box { height: 280px; }
+      .cell { padding: 14px 16px; }
+    }
+
+  </style>
 </head>
 <body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#">
+        <img src="assets/images/logo_header.svg">
+      </a>
+      <nav id="nav">
+        <button class="menu-btn mono" type="button" onclick="document.getElementById('nav').classList.toggle('open')">MENU</button>
+        <ul class="mono">
+          <li><a href="#ai">Architecture</a></li>
+          <li><a href="#evolution">Trajectory</a></li>
+          <li><a href="#frontend">Front-end</a></li>
+          <li><a href="#about">Company</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
 
-    <section id="hero">
-        <div class="overlay"></div> <div class="container">
-        <h1>革新とプロフェッショナリズムで<br>ビジネス成長を加速</h1>
-        <p>AI・モダンWeb技術・データマネジメントの<br>専門知識で、お客様の課題を解決し<br>価値創造に貢献します</p>
+  <main>
+    <div class="wrap hero">
+      <div>
+        <p class="kicker mono">01 / MATHEMATICAL PHYSICS × ENGINEERING</p>
+        <h1>確率的揺らぎを、<br><em>工学的な確実性</em>へ。</h1>
+        <p class="lead">戦線は二つある。生成AIでは、出力をうまく促すのではなく軌道として設計する。フロントエンドでは、流行りのフレームワークにアプリを乗せない。どちらも別プロダクトとして、別の現場で使われている。</p>
+        <div class="cta">
+          <a class="btn btn-solid" href="#evolution">設計の軌跡を見る →</a>
+          <a class="btn btn-ghost" href="https://portableagent.run/" target="_blank" rel="noopener">Portable Agent ↗</a>
+          <a class="btn btn-ghost" href="https://color-concept.ashiras.io/" target="_blank" rel="noopener">Color Concept ↗</a>
+        </div>
+      </div>
+      <div class="orbit-box" aria-hidden="true">
+        <svg viewBox="0 0 400 400">
+          <ellipse class="spin" cx="200" cy="200" rx="160" ry="58" stroke="#0b7cab" stroke-width="1.2" fill="none"/>
+          <ellipse class="spin-rev" cx="200" cy="200" rx="160" ry="58" stroke="#c9841a" stroke-width="1" fill="none"/>
+          <ellipse cx="200" cy="200" rx="160" ry="58" stroke="#8b95a1" stroke-width="1" fill="none" transform="rotate(-50 200 200)"/>
+          <circle cx="200" cy="200" r="4" fill="#c9841a"/>
+          <circle class="spin" cx="360" cy="200" r="3.5" fill="#0b7cab"/>
+          <text x="214" y="196" fill="#5b6674" font-size="10" font-family="IBM Plex Mono">FIXED POINT</text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="wrap axes" id="products">
+      <div class="grid2">
+        <article class="card">
+          <div class="tags mono"><span class="tag">Product 01</span><span class="tag">Generative AI</span></div>
+          <h3>軌道設計</h3>
+          <p>モデルを賢くする仕事ではない。止める点、固定する点、引き戻す点をアーキテクチャ側に置く。Portable Agent と multi-ai-cli は、この軸のプロダクトです。</p>
+        </article>
+        <article class="card">
+          <div class="tags mono"><span class="tag">Product 02</span><span class="tag">Front-end</span></div>
+          <h3>UIコア</h3>
+          <p>React や Angular の寿命に、アプリの寿命を縛らない。見た目と振る舞いをピュアJSのコアに切り出す。Elem UI は、この軸のプロダクトです。</p>
+        </article>
+      </div>
+    </div>
+
+    <section id="ai">
+      <div class="wrap">
+        <p class="idx mono">02 / GENERATIVE AI ARCHITECTURE</p>
+        <h2>AIを「設計問題」として解く</h2>
+        <p class="desc">生成AIの出力は本質的に確率的です。最新論文を追うのではなく、「状態空間における軌道のズレ」として定式化し、大規模開発の現場で回る軌道設計に落とします。中を賢くするな。外を設計しろ。</p>
+        <div class="grid2">
+          <article class="card">
+            <div class="tags mono"><span class="tag">Softmax Crowding</span><span class="tag">Semantic Drift</span></div>
+            <h3>確率的AIの軌道制御</h3>
+            <p>コンテキスト長 N の増大で初期制約の注意確率 P<sub>N</sub> は死滅する。続く自己回帰は D<sub>t+1</sub> = D<sub>t</sub> + g<sub>t</sub>(D<sub>t</sub>) + η<sub>t</sub> − δ<sub>t</sub> としてズレを積む。プロンプトを磨くのではなく、止める点・固定する点・照合する点・引き戻す点をアーキテクチャが持つ。</p>
+          </article>
+          <article class="card">
+            <div class="tags mono"><span class="tag">Trajectory Design</span><span class="tag">Control State</span></div>
+            <h3>Rollback ≠ Recovery</h3>
+            <p>履歴を戻すことと、正常な制御状態へ戻すことは別問題である。局所整合ではなく Artifact の外部固定を優先し、人間ゲートをハブにした復帰条件を設計対象にする。</p>
+          </article>
+        </div>
+      </div>
     </section>
+
+    <section id="evolution">
+      <div class="wrap">
+        <p class="idx mono">03 / PARADIGM SHIFT</p>
+        <h2>現象を式に書き、現場に落とす。</h2>
+        <p class="desc">意味の drift、長文の crowding、Agent の発散、Harness、Plan / Rewind も、先に観測されるふるまいとして扱う。それを設計変数へ写す。ずれは自己回帰の累積 D<sub>t+1</sub> = D<sub>t</sub> + g<sub>t</sub>(D<sub>t</sub>) + η<sub>t</sub> − δ<sub>t</sub> として定義する。履歴の巻き戻しと Control State への復帰は別操作とする。Artifact は系の外へ固定し、人間ゲートを復帰条件のハブにする。論文の語彙を機能名へ写すのではなく、現場が操作できる制約へ落とすことが重要だ。</p>
+        <div class="track">
+          <div class="row mono">
+            <div class="col-h">t</div>
+            <div class="col-h">World</div>
+            <div class="col-h">Ashiras</div>
+          </div>
+
+          <div class="row">
+            <div class="cell when mono">2024.03</div>
+            <div class="cell">
+              <div class="ttl">長文生成の drift 測定</div>
+              <p class="sub">正しい事実が先、誤りが後に出る。対処は early stopping に留まる。</p>
+            </div>
+            <div class="cell">
+              <div class="ttl">Drift を自己回帰の累積として定式化</div>
+              <p class="sub">D<sub>t+1</sub> = D<sub>t</sub> + g<sub>t</sub>(D<sub>t</sub>) + η<sub>t</sub> − δ<sub>t</sub>。外部介入 δ<sub>t</sub> が無い限り KL は単調増加し、平衡点 D* &gt; 0 へ落ちる。</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="cell when mono">2025.03</div>
+            <div class="cell">
+              <div class="ttl">Agent ブーム / Harness 未定着</div>
+              <p class="sub">AutoGPT 型が失速。プロンプト分業が主流。</p>
+            </div>
+            <div class="cell">
+              <div class="ttl">開発を写像列 Γ として定義</div>
+              <p class="sub">要件→設計→実装を意味複体の変換と見る。人間をハブにした MADD。AI同士の対話協調は捨て、司令塔は人間に固定。</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="cell when mono">2025.11</div>
+            <div class="cell">
+              <div class="ttl">Harness Engineering の命名</div>
+              <p class="sub">モデル外側の Runtime が議論の主語になる。</p>
+            </div>
+            <div class="cell">
+              <div class="ttl">「自浄するマルチエージェント」を棄却</div>
+              <p class="sub">相互監視は観測装置であって閉包の保証ではない。同調バイアスでドリフトは伝播する。P<sub>success</sub> = (1−δ)<sup>n</sup> の指数減衰を、会話履歴そのものの設計問題へ翻訳した。</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="cell when mono">2026.03</div>
+            <div class="cell">
+              <div class="ttl">セッション分割と 3-agent 体制</div>
+              <p class="sub">Planner / Generator / Evaluator。</p>
+            </div>
+            <div class="cell">
+              <div class="ttl">成果物固定 + multi-ai-cli</div>
+              <p class="sub">局所整合ではなく Artifact を黒板へ外部化。Agent/Engine を分離し、異種モデルの軌道を HAN 構文（→ と ||）で接続。意味距離ではなく位相保存——制約ID・トレーサビリティ・Persistent Homology——で品質を測る。</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="cell when mono">2026.06</div>
+            <div class="cell">
+              <div class="ttl">Plan / Rewind / Worktree の一般化</div>
+              <p class="sub">Harness 機能が各社実装の常識になる。</p>
+            </div>
+            <div class="cell">
+              <div class="ttl">Trajectory Design</div>
+              <p class="sub">Prompt を初期条件、生成列を軌道、固定点と復帰条件を設計対象にする。Rollback ≠ Recovery。履歴を戻すことと Control State への復帰を分離した。</p>
+            </div>
+          </div>
+
+          <div class="row now">
+            <div class="cell when mono">2026.09</div>
+            <div class="cell">
+              <div class="ttl">現場適用と承認ゲート</div>
+              <p class="sub">発散制御と人間ゲートが未解決の主問題。</p>
+            </div>
+            <div class="cell">
+              <div class="ttl">Portable Agent</div>
+              <p class="sub">Work = Goal + Plan + Trajectory + Checkpoint + Control State + Artifact + Guard。状態は Harness が持ち、LLM は交換可能。「仕事を持ち運ぶ。LLMは持ち運ばない。」</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section id="frontend">
+  <div class="wrap">
+    <p class="idx mono">04 / FRONT-END ENGINEERING</p>
+    <h2>フレームワークを追うな。コアを置け。</h2>
+    <p class="desc">UIパーツが持つのは、見た目と振る舞いである。React や Angular が持つのは、ページを組み立て、状態を持ち、更新を配る層である。層が違うものを、同じ文法の上に置くな。ボタンを React コンポーネントとして書く必要はない。マルチフレームワークの現場では、それが再利用できるかどうかそのものになる。コアは DOM と純関数に置き、枠ごとの書き味だけ薄いラッパーに残す。</p>
+    <div class="grid2">
+      <article class="card">
+        <div class="tags mono"><span class="tag">Web Components</span><span class="tag">Pure JS</span></div>
+        <h3>UIパーツとフレームワークは、層が違う</h3>
+        <p>パーツを枠の寿命に縛った瞬間、Angular の管理画面と React の新規アプリで、同じボタンを二度書くことになる。コアを純関数と DOM 標準に置けば、素の HTML からも同じ振る舞いが出る。CVA も状態転写も皮で足りる。寄せるのは呼び出し側だけだ。マルチフレームワークを採用するほど、依存の向きはこう逆になる。</p>
+      </article>
+      <article class="card">
+        <div class="tags mono"><span class="tag">Color Concept</span><span class="tag">Palette Engineering</span></div>
+        <h3>配色を、感覚ではなく計算にする</h3>
+        <p>デザイナーが画面の上で置いている色の配置を、工学側で出す。メインカラーから補色のアクセント、同系色のベース、背景輝度に対する文字色を計算する。現場で使っているものを公開した。</p>
+        <p style="margin-top:14px">補色で視線をボタンと通知へ送る。同系色で白背景より階層を出す。輝度から白／黒を自動判定し、無彩色でも同化させない。</p>
+        <p style="margin-top:14px"><a href="https://color-concept.ashiras.io/" target="_blank" rel="noopener">Color Concept →</a></p>
+      </article>
+    </div>
+  </div>
+</section>
 
     <section id="about">
-        <div class="overlay"></div> <div class="container">
-            <h2>ご挨拶 / 会社概要</h2>
-            <div>
-                <h3>ご挨拶</h3>
-                <p>アシラス株式会社は、2016年の設立以来、テクノロジーが社会とビジネスにもたらす変革の可能性を深く追求してまいりました。「革新」と「プロフェッショナリズム」を企業哲学の核に据え、常に最先端の技術動向を見極め、来るべきデジタル時代に対応する高品質なソリューションを提供することを使命としております。</p>
-                <p>AIの進化、Web技術の多様化、データ活用の重要性増大など、技術環境は絶えず変化しています。私たちは、これらの変化を機会と捉え、確固たる技術基盤と柔軟な発想を武器に、お客様一社一社の固有の課題に対し、本質的な解決策を追求いたします。単にシステムを構築するだけでなく、技術コンサルティングを通じてお客様自身が技術を使いこなし、持続的な成長を実現できるよう伴走支援することを目指しています。</p>
-                <p>日本全国のお客様、そして国内外のビジネスパートナー様から寄せられる期待に応えるべく、培ってきた知見とグローバルな視点を融合させ、常に最良のアウトプットを追求してまいります。これからも、技術の力でお客様のビジネスを加速させ、より豊かな社会の実現に貢献してまいる所存でございます。</p>
-            </div>
-            <div>
-                <h3>会社概要</h3>
-                <p><strong>会社名:</strong> アシラス株式会社 (Ashiras, inc.)</p>
-                <p><strong>設立:</strong> 2016年8月</p>
-                <p><strong>資本金:</strong> 1,000万円</p>
-                <p><strong>所在地:</strong> 〒654-0014 神戸市須磨区若木町４丁目４−３</p>
-                <p>
-                    <strong>開発ルーム:</strong> 〒651-0083 兵庫県神戸市中央区浜辺通４丁目１−２３ 三宮ベンチャービル 725
-                     <a href="https://www.google.com/maps/search/?api=1&query=神戸市中央区浜辺通４丁目１−２３ 三宮ベンチャービル 725" target="_blank" class="map-link" title="Googleマップを開く">
-                         <i class="fas fa-map-marker-alt"></i> </a>
-                </p>
-                <p><strong>連絡先:</strong> 078-798-5203</p>
-            </div>
+      <div class="wrap">
+        <p class="idx mono">05 / COMPANY</p>
+        <h2>会社概要</h2>
+        <div class="grid2" style="align-items:start">
+          <div>
+            <h3 style="margin-bottom:12px">一つの思想、二つの基盤</h3>
+            <p class="desc" style="margin-bottom:0">生成AIでは軌道を置く。フロントではコアを置く。配色は計算する。外を設計し、現場は分ける。</p>
+            <p class="desc" style="margin-bottom:0">自由度を内側に足しても、軌道は安定しない。モデルを大きくしても、フレームワークを厚くしても、ずれは内側で増える。安定するのは固定点である。生成列なら止める点と復帰条件。UIなら見た目と振る舞いのコア。配色なら補色・同系色・輝度の関係。先にそれを外へ置く。内側は、その上で交換してよい。</p>
+          </div>
+          <div class="card">
+            <dl>
+              <dt class="mono">会社名</dt><dd>アシラス株式会社（Ashiras, inc.）</dd>
+              <dt class="mono">設立 / 資本金</dt><dd>2016年8月 / 1,000万円</dd>
+              <dt class="mono">所在地</dt><dd>〒654-0014 神戸市須磨区若木町4丁目4−3</dd>
+              <dt class="mono">開発ルーム</dt>
+              <dd>神戸市中央区浜辺通4丁目1−23 三宮ベンチャービル 725
+                <a href="https://www.google.com/maps/search/?api=1&query=神戸市中央区浜辺通４丁目１−２３ 三宮ベンチャービル 725" target="_blank" rel="noopener">map</a>
+              </dd>
+            </dl>
+          </div>
         </div>
+      </div>
     </section>
+  </main>
 
-    <section id="services">
-        <div class="overlay"></div> <div class="container">
-            <h2>事業内容</h2>
-            <div>
-                <h3>AIソリューション</h3>
-                <p>AIパイプライン構築、プロンプトチューニング等、最新AI技術の研究開発と導入を支援。技術論文執筆等を通じて既に実用化を進め、大幅な開発効率化を実現しています。</p>
-            </div>
-            <div>
-                <h3>Webアプリケーション開発</h3>
-                <p>React/Angular等による独自コンポーネント開発、構造化支援。独自コンポーネント導入により、変更に強く、大幅な開発コスト削減と品質向上を実現。 国内外の主要な企業様との豊富な実績があります。</p>
-            </div>
-            <div>
-                <h3>技術コンサルティング</h3>
-                <p>ドメイン駆動設計（DDD）、アジャイル開発といった手法に加え、データベースに関する深い知識と豊富な経験に基づき、</strong>高品質かつ柔軟なソフトウェア開発、およびデータマネジメントに関する実践的なコンサルティングを提供。</p>
-            </div>
-                <div>
-                <h3>講演・執筆</h3>
-                <p>技術コミュニティへの貢献として講演・執筆活動を実施。Microsoft MVP 受賞経験のある代表は、過去に年間数十回規模の登壇実績を持ち、専門知識を共有しています。</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="strengths">
-        <div class="overlay"></div> <div class="container">
-            <h2>私たちの強み</h2>
-            <ul>
-                <li>
-                    <h3>最先端技術の実践力</h3>
-                    <p>AI/モダンWeb技術、およびデータベースに関する深い理解と、開発効率化やコスト削減・品質向上に直結する実践的な応用力。</p>
-                </li>
-                <li>
-                    <h3>信頼と実績</h3>
-                    <p>大手SIer、生保、自動車関連といった業界をリードする日本全国の企業様、および海外主要クライアントとの多数の取引実績に裏付けられた、エンタープライズレベルでの技術力とプロジェクト遂行能力。</p>
-                </li>
-                <li>
-                    <h3>少数精鋭による高い生産性</h3>
-                    <p>最適化された少数精鋭のプロフェッショナルチームにより、迅速かつ高品質なアウトプットを実現し、お客様に圧倒的な価値を提供します。</p>
-                </li>
-                    <li>
-                    <h3>カスタマイズと課題解決</h3>
-                    <p>お客様固有の課題に寄り添い、最適な技術をテーラーメイドで提供する能力。</p>
-                </li>
-                    <li>
-                    <h3>業界プレゼンスと知識共有</h3>
-                    <p>代表の豊富な登壇実績に象徴される、技術コミュニティにおける高いプレゼンスと知識共有への貢献姿勢。</p>
-                </li>
-                    <li>
-                    <h3>ワンストップ支援</h3>
-                    <p>研究開発から開発、コンサルティング、知識共有まで、テクノロジーに関する幅広いニーズに対応。</p>
-                </li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="blog">
-            <div class="overlay"></div> <div class="container">
-            <h2>ブログ</h2>
-            <p>最新の情報や技術に関する知見は、ぜひ弊社のブログでご確認ください。</p>
-            <a href="./blogs.html" class="blog-button">ブログを見る</a>
-        </div>
-    </section>
-
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 アシラス株式会社 All Rights Reserved.</p>
-            <p class="gemini-credit">このサイトは Gemini の協力を得て作成されました。</p>
-            <p><a href="privacy-policy.html">プライバシーポリシー</a></p>
-        </div>
-    </footer>
-
+  <footer>
+    <div class="wrap">
+      <div class="brand">
+        <svg class="mark" viewBox="0 0 32 32" fill="none"><ellipse cx="16" cy="16" rx="13" ry="6" stroke="#0b7cab" stroke-width="1.2" transform="rotate(-28 16 16)"/><circle cx="16" cy="16" r="2.2" fill="#c9841a"/></svg>
+        Ashiras.io
+      </div>
+      <p>© 2026 アシラス株式会社 (Ashiras, inc.)</p>
+      <p style="margin-top:8px"><a href="privacy-policy.html">プライバシーポリシー</a></p>
+    </div>
+  </footer>
 </body>
 </html>
